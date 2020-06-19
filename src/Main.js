@@ -3,6 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
+import MessageForm from './components/MessageForm.js';
 import authenticate from "./helpers/authenticate";
 import flashError from "./helpers/flashError";
 
@@ -48,6 +49,12 @@ const Main = props => {
                             signup
                         ></AuthForm>
                     )}
+                ></Route>
+
+                {/* POST MESSAGE */}
+                <Route
+                    path="/users/:id/message/new"
+                    component={MessageForm}
                 ></Route>
 
             </Switch>

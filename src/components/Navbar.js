@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import MessageForm from './MessageForm.js';
 import logout from '../helpers/logout'
 
 const NavigationBar = () => {
@@ -21,7 +20,8 @@ const NavigationBar = () => {
                     // conditional rendering for logged-in users
                     (!!Object.keys(user).length)
                     ? ( <ul className="nav navbar-nav navbar-right">
-                            <li><Link to={`/users/${user.id}/message/new`} component={MessageForm} >New Message</Link></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to={`/users/${user.id}/message/new`}>New Message</Link></li>
                             <li><Link to="/" onClick={logout}>Log out</Link></li>
                         </ul>
                     )

@@ -14,17 +14,26 @@ class MessageForm extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    handleNewMessage = e => {
+        e.preventDefault();
+        this.props.postNewMessage(this.state.message)
+        this.setState({ message: '' })
+    }
+
     render() {
 
         return (
 
-            <form>
+            <form
+                onSubmit={this.handleNewMessage}
+            >
 
             <input
                 type="text"
+                name="message"
                 className="form-control"
                 value={this.state.message}
-                onchange={this.handleChange}
+                onChange={this.handleChange}
             />
 
             <button

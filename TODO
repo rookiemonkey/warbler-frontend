@@ -1,0 +1,17 @@
+signup
+    -- db rejects same email, however, no error message for the user, went to home page only
+    -- db should also reject same username, on logs it only checks the email
+
+
+signin
+    -- db rejects wrong pw, however, no error message for the user, went to home page only
+    -- db rejects wrong email, but error is internal server error.. change it to "wrong u/pw" instead
+
+
+logged in (homepage)
+    -- having troubles with the promise not returning anything...
+
+
+MIDDLEWARE
+    -- access to new message for logged in users only
+    -- if logged in, check id
