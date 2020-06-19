@@ -1,9 +1,16 @@
 import { removeError } from "../store/actions/error";
 
 const flashError = (id, dispatch, t) => {
-    id = setInterval(() => {
+
+    // store the timout id te be used after a few seconds
+    id = setTimeout(() => {
+
+                // remove the error by dispatching an action
                 dispatch(removeError());
-                clearInterval(id);
+
+                // removes the timeout
+                clearTimeout(id);
+
             }, t);
 }
 

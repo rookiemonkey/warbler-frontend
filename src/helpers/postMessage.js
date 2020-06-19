@@ -1,6 +1,7 @@
 import { POSTapiCall } from '../services/api';
 import { addError } from '../store/actions/error';
-const API_URL = `https://warbler-backend-api.herokuapp.com`;
+const API_URL = `https://warbler-backend-api.herokuapp.com`; // `${API_URL}/api/auth/${id}/message`
+const API_LOCAL = 'htttps://localhost:8081' // `${API_LOCAL}/api/auth/${id}/message`
 
 const postNewMessage = text => (dispatch, getState) => {
 
