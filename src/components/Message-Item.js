@@ -8,26 +8,30 @@ const MessageItem = ({date, img, text, username}) => {
 
         <div>
 
-            <img
-                className="timeline-image"
-                src={img || DefaultImage}
-                alt={username}
-                height='100px'
-                width='100px'
-            />
+            <li className="list-group-item">
 
-            <div className="message-area">
+                <img
+                    className="timeline-image"
+                    src={img || DefaultImage}
+                    alt={username}
+                    height='100px'
+                    width='100px'
+                />
 
-                <Link to="/">@{username} &nbsp;</Link>
-                <span className="text-muted">
-                    <Moment
-                        className="text-muted"
-                        format='Do MMM YYYY'
-                    >{date}</Moment>
-                </span>
-                <p>{text}</p>
+                <div className="message-area">
 
-            </div>
+                    <Link to="/">@{username} &nbsp;</Link>
+                    <span className="text-muted">
+                        <Moment
+                            className="text-muted"
+                            format='Do MMM YYYY'
+                        >{date}</Moment>
+                    </span>
+                    <p>{text}</p>
+
+                </div>
+
+            </li>
 
         </div>
 

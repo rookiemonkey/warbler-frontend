@@ -20,7 +20,7 @@ class AuthForm extends Component {
         const { authenticate } = this.props
         const authType = this.props.signup ? 'signup' : 'signin'
         authenticate(authType, this.state)
-            .then(res => { this.props.history.push('/') })
+            .then(res => { this.props.history.push('/'); })
             .catch(err => { console.error(err) })
     }
 

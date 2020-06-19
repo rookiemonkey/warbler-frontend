@@ -1,28 +1,43 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import fetchMessage from "../helpers/setMessages";
 import MessageItem from "./Message-Item";
 
-const MessageList = async () => {
+class MessageList extends Component {
 
-    const dispatch = useDispatch();
-    await fetchMessage(dispatch);
+  componentDidMount() {
+    this.props.fetchMessage();
+  }
 
-    const messages = useSelector(state => state.messageReducer)
-    const output = messages.map((m) => {
-        console.log("this is a message: ===============", m)
-        return (
-                <MessageItem
-                    key={m._id}
-                    date={m.createdAt}
-                    text={m.text}
-                    username={m.user.username}
-                    profileImageUrl={m.user.profileImageUrl}
-                />
-            );
-        });
+  render() {
+    const { messages } = this.props;
+    let messageList = messages.map(m => (
+      <MessageItem
+        key={m._id}
+        date={m.createAt}
+        text={m.text}
+        username={m.user.username}
+        profileImageUrl={m.user.profilePicture}
+      />
+    ));
+    return (
 
-    return output;
-};
+      <div className="row col-sm-8">
+        <div className="offset-1 col-sm-10">
+          <ul className="list-group" id="messages">
+            {messageList}
+          </ul>
+        </div>
+      </div>
 
-export default MessageList;
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    messages: state.messageReducer
+  };
+}
+
+export default connect(mapStateToProps, { fetchMessage })(MessageList);
