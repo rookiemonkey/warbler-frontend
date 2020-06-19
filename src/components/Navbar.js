@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import MessageForm from './MessageForm';
+import MessageForm from './MessageForm.js';
 import logout from '../helpers/logout'
 
 const NavigationBar = () => {
