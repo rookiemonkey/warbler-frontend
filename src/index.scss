@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+$font:'Montserrat', sans-serif;
+
+body {
+    font-family: !important $font;
+}
+
+// navigation, login, signup
+div.onboarding {
+
+    nav#navbar-outer {
+        background-color: gray;
+
+        div#navbar-inner {
+            margin: 0px 15%;
+
+                ul {
+                display: flex;
+                flex-direction: row-reverse;
+                width: 100%;
+
+                li {
+                    margin: 0px 0px 0px 2.5%;
+
+                    a {
+                        color: black;
+
+                        &:hover {
+                            color: white;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
