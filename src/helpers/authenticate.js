@@ -2,6 +2,7 @@ import { addError, removeError } from '../store/actions/error';
 import setSession from '../store/actions/session';
 import { POSTapiCall } from '../services/api';
 import setTokenHeader from './setTokenHeader';
+const API_URL = `https://warbler-backend-api.herokuapp.com`
 
 const authenticate = (type, userData) => {
 
@@ -12,7 +13,7 @@ const authenticate = (type, userData) => {
         return new Promise((resolve, reject) => {
 
             // apicall also returns a promise
-            return POSTapiCall(`http://localhost:8081/api/auth/${type}`, userData)
+            return POSTapiCall(`${API_URL}/api/auth/${type}`, userData)
 
                 // response contains the user/token
                 .then(({ token, ...user }) => {
