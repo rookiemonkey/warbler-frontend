@@ -3,7 +3,7 @@ import setSession from '../store/actions/session';
 import { POSTapiCall } from '../services/api';
 import setTokenHeader from './setTokenHeader';
 const API_URL = `https://warbler-backend-api.herokuapp.com` // `${API_URL}/api/auth/${type}`
-const API_LOCAL = 'http://localhost:8081' // `${API_LOCAL}/api/auth/${type}`
+// const API_LOCAL = 'http://localhost:8081' // `${API_LOCAL}/api/auth/${type}`
 
 const authenticate = (type, userData) => {
 
@@ -14,7 +14,7 @@ const authenticate = (type, userData) => {
         return new Promise((resolve, reject) => {
 
             // apicall also returns a promise
-            return POSTapiCall(`${API_LOCAL}/api/auth/${type}`, userData)
+            return POSTapiCall(`${API_URL}/api/auth/${type}`, userData)
 
                 // response contains the user/token
                 .then(({ token, ...user }) => {

@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import DefaultImage from '../images/default-profile-picture.jpg';
 
-const MessageItem = ({ date, img, text, username, deleteMessage, messageID }) => {
+const MessageItem = ({ date, img, text, username, deleteMessage, messageID, authorID }) => {
 
     const userID = useSelector(state => state.sessionReducer.user.id)
 
@@ -35,10 +35,15 @@ const MessageItem = ({ date, img, text, username, deleteMessage, messageID }) =>
 
                     <p>{text}</p>
 
-                    <a
-                        className="btn btn-danger"
-                        onClick={() => { deleteMessage(userID, messageID) }}
-                    >Delete</a>
+                    {
+                        (authorID == userID)
+                            ? (<a
+                                className="btn btn-danger"
+                                onClick={() => { deleteMessage(userID, messageID) }}
+                                >Delete</a>)
+                            : null
+                    }
+
 
                 </div>
 

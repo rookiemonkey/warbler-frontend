@@ -19,6 +19,7 @@ class MessageList extends Component {
         text={m.text}
         username={m.user.username}
         messageID={m._id}
+        authorID={m.user._id}
         profileImageUrl={m.user.profilePicture}
         deleteMessage={deleteMessage}
       />
