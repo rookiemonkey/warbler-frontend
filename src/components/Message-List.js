@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import fetchMessage from "../helpers/setMessages";
+import deleteMessage from '../helpers/deleteMessage';
 import MessageItem from "./Message-Item";
 
 class MessageList extends Component {
@@ -10,14 +11,16 @@ class MessageList extends Component {
   }
 
   render() {
-    const { messages } = this.props;
+    const { messages, deleteMessage } = this.props;
     let messageList = messages.map(m => (
       <MessageItem
         key={m._id}
         date={m.createAt}
         text={m.text}
         username={m.user.username}
+        messageID={m._id}
         profileImageUrl={m.user.profilePicture}
+        deleteMessage={deleteMessage}
       />
     ));
     return (
@@ -40,4 +43,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchMessage })(MessageList);
+export default connect(mapStateToProps, { fetchMessage, deleteMessage })(MessageList);

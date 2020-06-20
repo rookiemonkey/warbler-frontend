@@ -27,3 +27,17 @@ export const GETapiCall = (path, data) => {
             })
     })
 }
+
+export const DELETEapiCall = (path, data) => {
+    return new Promise((resolve, reject) => {
+        return axios.delete(path, data)
+            .then(res => {
+                return resolve(res.data)
+            })
+            .catch(err => {
+                return reject({
+                    Message: err.message,
+                })
+            })
+    })
+}

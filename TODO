@@ -10,8 +10,3 @@ signin
 
 logged in (homepage)
     -- having troubles with the promise not returning anything...
-
-
-MIDDLEWARE
-    -- access to new message for logged in users only
-    -- if logged in, check id

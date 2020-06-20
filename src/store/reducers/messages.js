@@ -5,7 +5,7 @@ const messageReducer = (state = [], action) => {
         case LOAD_MESSAGES:
             return [...action.messages];
         case REMOVE_MESSAGE:
-            return [];
+            return state.filter(m => { return m._id !== action.id });
         default: return state;
     }
 }

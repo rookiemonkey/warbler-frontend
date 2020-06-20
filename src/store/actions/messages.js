@@ -5,6 +5,7 @@ export const loadMessage = messages => ({
     messages
 })
 
-export const removeMessage = () => ({
-    type: REMOVE_MESSAGE
+export const removeMessage = id => ({
+    type: REMOVE_MESSAGE,
+    id
 })
