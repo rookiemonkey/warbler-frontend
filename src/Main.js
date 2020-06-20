@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
 import MessageForm from './components/MessageForm.js';
+import isLoggedIn from "./middleware/isLoggedIn";
 import authenticate from "./helpers/authenticate";
 import flashError from "./helpers/flashError";
 
@@ -54,7 +55,7 @@ const Main = props => {
                 {/* POST MESSAGE */}
                 <Route
                     path="/users/:id/message/new"
-                    component={MessageForm}
+                    component={isLoggedIn(MessageForm)}
                 ></Route>
 
             </Switch>
