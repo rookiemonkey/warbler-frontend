@@ -7,13 +7,8 @@ export const POSTapiCall = (path, data) => {
                 return resolve(res.data)
             })
             .catch(err => {
-                console.log(err)
-                const { status, statusText } = err.response
-                const { message } = err.response.data.error
                 return reject({
-                    Status: status,
-                    Message: statusText,
-                    MoreInfo: message
+                    Message: err.message,
                 })
             })
     })
@@ -26,12 +21,8 @@ export const GETapiCall = (path, data) => {
                 return resolve(res.data)
             })
             .catch(err => {
-                const { status, statusText } = err.response
-                const { message } = err.response.data.error
                 return reject({
-                    Status: status,
-                    Message: statusText,
-                    MoreInfo: message
+                    Message: err.message,
                 })
             })
     })
