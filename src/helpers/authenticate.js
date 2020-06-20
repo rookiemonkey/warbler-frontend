@@ -14,7 +14,7 @@ const authenticate = (type, userData) => {
         return new Promise((resolve, reject) => {
 
             // apicall also returns a promise
-            return POSTapiCall(`${API_URL}/api/auth/${type}`, userData)
+            return POSTapiCall(`${API_LOCAL}/api/auth/${type}`, userData)
 
                 // response contains the user/token
                 .then(({ token, ...user }) => {

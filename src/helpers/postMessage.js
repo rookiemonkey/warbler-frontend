@@ -12,7 +12,7 @@ const postNewMessage = text => (dispatch, getState) => {
     const id = state.sessionReducer.user.id
 
     // call POSTapiCALL will return a promise
-    return POSTapiCall(`${API_URL}/api/auth/${id}/message`, { text })
+    return POSTapiCall(`${API_LOCAL}/api/auth/${id}/message`, { text })
         .then(res => {} )
         .catch(err => dispatch(addError(err.message)))
 }

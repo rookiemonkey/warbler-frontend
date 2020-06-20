@@ -7,6 +7,3 @@ signin
     -- db rejects wrong pw, however, no error message for the user, went to home page only
     -- db rejects wrong email, but error is internal server error.. change it to "wrong u/pw" instead
 
-
-logged in (homepage)
-    -- having troubles with the promise not returning anything...

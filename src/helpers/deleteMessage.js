@@ -6,7 +6,7 @@ const API_LOCAL = 'http://localhost:8081' // `${API_LOCAL}/api/auth/${userID}/me
 
 const deleteMessage = (userID, messageID) => {
     return dispatch => {
-        return DELETEapiCall(`${API_URL}/api/auth/${userID}/message/${messageID}`)
+        return DELETEapiCall(`${API_LOCAL}/api/auth/${userID}/message/${messageID}`, null)
             .then(res => { dispatch(removeMessage(messageID)) })
             .catch(err => { dispatch(addError(err.Message) )})
     }
