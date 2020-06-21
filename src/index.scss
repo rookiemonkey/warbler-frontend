@@ -8,8 +8,8 @@ $color-delete-btn-font: rgb(189, 33, 48);
 // ===========================================
 // GLOBAL
 // ===========================================
-
 $distance-to-navbar-and-footer: 20px 0px;
+$distance-to-window-aside: 20px;
 
 body {
     font-family: $font !important ;
@@ -66,6 +66,35 @@ div.onboarding {
         justify-content: center;
         margin: $distance-to-navbar-and-footer;
 
+        // aside
+        aside#aside-timeline-outer {
+            position: relative;
+            width: 500px;
+
+            div#aside-timeline-middle {
+                position: sticky;
+                top: $distance-to-window-aside;
+
+                div#aside-timeline-inner {
+
+                    h3 { font-size: 1.1rem; }
+
+                    h6 { font-size: .9rem;  }
+
+                    ul {
+                        list-style-type: none;
+                        padding: 0px;
+
+                        li {
+                            font-size: .75rem;
+
+                            span { font-weight: 800  }
+                        }
+                    }
+                }
+            }
+        }
+
         // messages container
         div#message-list {
             background-color: $color-bg;
@@ -117,6 +146,7 @@ div.onboarding {
                 }
             }
         }
+
     }
 
     // when no one is logged in

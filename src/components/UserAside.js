@@ -1,13 +1,18 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Moment from 'react-moment';
 import setDefaultImage from '../helpers/setDefaultImage';
 
-const UserAside = ({profilePicture, username}) => {
+const UserAside = () => {
+
+    const user = useSelector(state => state.sessionReducer.user);
+    const { profilePicture, username, accountCreation, email } = user;
 
     return (
 
-        <aside className="col-sm-2">
-            <div className="panel panel-default">
-                <div>
+        <aside className="col-sm-3" id="aside-timeline-outer">
+            <div className="panel panel-default" id="aside-timeline-middle">
+                <div id="aside-timeline-inner">
                     <img
                         className="img-thumbnail"
                         src={profilePicture}
@@ -15,7 +20,11 @@ const UserAside = ({profilePicture, username}) => {
                         style={{width: "200px", height: "auto"}}
                         onError={setDefaultImage}
                     />
-                    <h3>@{ username }</h3>
+                    <h3><strong>@{ username }</strong></h3>
+                    <h6><em>Since: <Moment format='Do MMM YYYY' >{ accountCreation }</Moment> </em></h6>
+                    <ul>
+                        <li><span>Email: </span> { email }</li>
+                    </ul>
                 </div>
             </div>
         </aside>
