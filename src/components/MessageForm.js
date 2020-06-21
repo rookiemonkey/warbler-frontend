@@ -27,6 +27,7 @@ class MessageForm extends Component {
 
             <div className="row justify-content-md-center text-center" id="form-container">
                 <div className="col-md-6">
+                    <h2>What's on your mind right now?</h2>
                     <form
                         id="message-form"
                         onSubmit={this.handleNewMessage}
@@ -39,6 +40,7 @@ class MessageForm extends Component {
                         className="form-control"
                         value={this.state.message}
                         onChange={this.handleChange}
+                        required={true}
                     />
 
                     <button

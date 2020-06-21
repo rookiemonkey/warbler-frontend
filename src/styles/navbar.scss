@@ -37,6 +37,11 @@ nav#navbar-outer {
                         text-decoration: none;
                         background-color: $hover-color;
                     }
+
+                    &:active {
+                        background-color: $hover-color;
+                        outline: none;
+                    }
                 }
             }
         }

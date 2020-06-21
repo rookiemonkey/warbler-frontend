@@ -23,9 +23,9 @@ const NavigationBar = () => {
                     // conditional rendering for logged-in users
                     (!!Object.keys(user).length)
                     ? ( <ul className="nav navbar-nav navbar-right">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={`/users/${user.id}/message/new`}>New Message</Link></li>
                             <li><Link to="/" onClick={logout}>Log out</Link></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to={`/users/${user.id}/message/new`}>New Post</Link></li>
                         </ul>
                     )
                     : (
