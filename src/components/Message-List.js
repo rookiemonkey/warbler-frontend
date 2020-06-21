@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import fetchMessage from "../helpers/setMessages";
 import deleteMessage from '../helpers/deleteMessage';
 import MessageItem from "./Message-Item";
+import MessageFormTimeline from "./MessageForm-Timeline";
 
 class MessageList extends Component {
 
@@ -28,6 +29,7 @@ class MessageList extends Component {
 
       <div className="row col-sm-8" id="message-list">
         <div className="offset-1 col-sm-10">
+          <MessageFormTimeline />
           <ul className="list-group" id="messages">
             {messageList}
           </ul>

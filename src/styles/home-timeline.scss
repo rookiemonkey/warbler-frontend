@@ -32,6 +32,22 @@ div#timeline-container {
         }
     }
 
+    // message form
+    div#form-container.message-form-timeline-container {
+
+        h2.message-form-timeline-header {
+            font-size: 1.25rem;
+        }
+
+        input#message-input.form-control.message-form-timeline-input {
+            margin: 0px;
+        }
+
+        button#message-button.btn.btn-success.pull-right.message-form-timeline-button {
+            margin: 5px 0px;
+        }
+    }
+
     // messages container
     div#message-list {
         background-color: $color-bg;
