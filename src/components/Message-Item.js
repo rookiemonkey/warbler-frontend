@@ -2,24 +2,25 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-import DefaultImage from '../images/default-profile-picture.jpg';
+import setDefaultImage from '../helpers/setDefaultImage';
 
-const MessageItem = ({ date, img, text, username, deleteMessage, messageID, authorID }) => {
+const MessageItem = ({ date, profileImageUrl, text, username, deleteMessage, messageID, authorID }) => {
 
     const userID = useSelector(state => state.sessionReducer.user.id)
 
     return (
 
-        <div>
+        <div id="message-item-container">
 
-            <li className="list-group-item">
+            <li className="list-group-item" id="message-item">
 
                 <img
                     className="timeline-image"
-                    src={img || DefaultImage}
+                    src={profileImageUrl}
                     alt={username}
                     height='100px'
                     width='100px'
+                    onError={setDefaultImage}
                 />
 
                 <div className="message-area">
@@ -43,7 +44,6 @@ const MessageItem = ({ date, img, text, username, deleteMessage, messageID, auth
                                 >Delete</a>)
                             : null
                     }
-
 
                 </div>
 

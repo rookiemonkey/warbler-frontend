@@ -9,7 +9,7 @@ const MessageTimeline = props => {
     const { profilePicture, username } = u;
 
     return (
-        <div className="row">
+        <div className="row" id="timeline-container">
 
             <UserAside
                 profilePicture={profilePicture}

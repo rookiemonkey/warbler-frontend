@@ -1,19 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 $font:'Montserrat', sans-serif;
+$color-bg: rgb(21, 32, 43); // #15202B
+$color-border: #5F6B78;
+$color-delete-btn-font: rgb(189, 33, 48);
+
+// ===========================================
+// GLOBAL
+// ===========================================
+
+$distance-to-navbar-and-footer: 20px 0px;
 
 body {
-    font-family: !important $font;
+    font-family: $font !important ;
+    background-color: $color-bg;
+    color: whitesmoke;
 }
 
 // navigation, login, signup
 div.onboarding {
 
     nav#navbar-outer {
-        background-color: gray;
+        background-color: $color-bg;
 
         div#navbar-inner {
             margin: 0px 15%;
+
+                span#warbler-logo-container {
+
+                    span#warbler {
+                        position: relative;
+                        top: 5px;
+                        margin-left: 10px;
+                        color: whitesmoke;
+                    }
+                }
 
                 ul {
                 display: flex;
@@ -24,11 +45,15 @@ div.onboarding {
                     margin: 0px 0px 0px 2.5%;
 
                     a {
-                        color: black;
+                        color: whitesmoke;
+                        width: 25px;
+                        height: auto;
+                        padding: 10px;
+                        transition: background-color 250ms linear 0ms;
 
                         &:hover {
-                            color: white;
                             text-decoration: none;
+                            background-color: lighten($color-bg, 5);
                         }
                     }
                 }
@@ -36,13 +61,76 @@ div.onboarding {
         }
     }
 
-    #messages .list-group-item {
-        display: flex;
-        align-item: flex-start;
-        padding: 7px 20px 12px;
+    // profile aside and message timeline
+    div#timeline-container {
+        justify-content: center;
+        margin: $distance-to-navbar-and-footer;
+
+        // messages container
+        div#message-list {
+            background-color: $color-bg;
+
+            div#message-item-container {
+                border: {
+                    left: 1px solid $color-border;
+                    right: 1px solid $color-border;
+                }
+
+                    &:first-child {
+                        border-top: 1px solid $color-border;
+                    }
+
+                    &:last-child {
+                        border-bottom: 1px solid $color-border;
+                    }
+
+                // each message box
+                li#message-item {
+                    background-color: $color-bg;
+                    display: flex;
+                    align-item: flex-start;
+                    padding: 7px 20px;
+
+                    &:hover {
+                        background-color: lighten($color-bg, 5);
+                    }
+
+                    // image of the user
+                    img {
+                        border-radius: 50px;
+                        object-fit: cover;
+                    }
+
+                    // message body
+                    div.message-area {
+                        background-color: transparent;
+                        width:100%;
+                        margin-left: 20px;
+
+                        a.btn.btn-danger {
+                            float: right;
+                            color: rgb(189, 33, 48);
+                            background-color: $color-bg;
+                            transform: scale(.70);
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    #messages:not(.no-hover) .list-group-item:hover {
-        background-color: #e6ecf8;
+    // when no one is logged in
+    div.home-hero {
+        margin: $distance-to-navbar-and-footer;
     }
+
+    // login/sign up form
+    div#form-container {
+        margin: $distance-to-navbar-and-footer;
+
+        form#message-input {
+
+        }
+    }
+
  }

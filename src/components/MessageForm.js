@@ -25,24 +25,31 @@ class MessageForm extends Component {
 
         return (
 
-            <form
-                onSubmit={this.handleNewMessage}
-            >
+            <div className="row justify-content-md-center text-center" id="form-container">
+                <div className="col-md-6">
+                    <form
+                        id="message-form"
+                        onSubmit={this.handleNewMessage}
+                    >
 
-            <input
-                type="text"
-                name="message"
-                className="form-control"
-                value={this.state.message}
-                onChange={this.handleChange}
-            />
+                    <input
+                        type="text"
+                        id="message-input"
+                        name="message"
+                        className="form-control"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                    />
 
-            <button
-                className="btn btn-success pull-right"
-                type="submit"
-            >Post Message</button>
+                    <button
+                        id="message-button"
+                        className="btn btn-success pull-right"
+                        type="submit"
+                    >Post Message</button>
 
-            </form>
+                    </form>
+                </div>
+            </div>
 
         )
     }

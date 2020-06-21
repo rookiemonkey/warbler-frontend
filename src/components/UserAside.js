@@ -1,5 +1,5 @@
 import React from 'react'
-import DefaultImage from '../images/default-profile-picture.jpg';
+import setDefaultImage from '../helpers/setDefaultImage';
 
 const UserAside = ({profilePicture, username}) => {
 
@@ -10,10 +10,12 @@ const UserAside = ({profilePicture, username}) => {
                 <div>
                     <img
                         className="img-thumbnail"
-                        src={profilePicture || DefaultImage}
+                        src={profilePicture}
                         alt={username}
                         style={{width: "200px", height: "auto"}}
+                        onError={setDefaultImage}
                     />
+                    <h3>@{ username }</h3>
                 </div>
             </div>
         </aside>

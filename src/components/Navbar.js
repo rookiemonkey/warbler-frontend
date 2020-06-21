@@ -12,9 +12,12 @@ const NavigationBar = () => {
         <nav className="navbar navbar-expand" id="navbar-outer">
             <div className="container-fluid" id="navbar-inner">
 
-                <Link to="/" className="navbar-brand">
-                    <img src="/images/logo.png" alt="Warbler"></img>
-                </Link>
+                <span id="warbler-logo-container">
+                    <Link to="/" className="navbar-brand">
+                        <img src="/images/logo.png" alt="Warbler"></img>
+                        <span id="warbler"><strong>//Warbler</strong></span>
+                    </Link>
+                </span>
 
                 {
                     // conditional rendering for logged-in users
