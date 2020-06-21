@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 $font:'Montserrat', sans-serif;
+$border-radius: 4px;
 $color-bg: rgb(21, 32, 43); // #15202B
 $color-border: #5F6B78;
 $color-delete-btn-font: rgb(189, 33, 48);
 $distance-to-navbar-and-footer: 20px 0px;
 $distance-to-window-aside: 20px;
+$hover-color: lighten($color-bg, 10);
+$focus-color: darken($color-bg, 7.5);
 
 body {
     font-family: $font !important ;

@@ -8,7 +8,7 @@ const HeaderNoUser = props => {
         <div className="home-hero">
             <h1>What's happening?</h1>
             <h4>New to Warbler?</h4>
-            <Link to="/signup" className="btn btn-primary">Sign up here</Link>
+            <Link to="/signup"><button className="btn btn-primary">Sign up here</button></Link>
         </div>
 
     );

@@ -58,7 +58,7 @@ div#timeline-container {
                 padding: 7px 20px;
 
                 &:hover {
-                    background-color: lighten($color-bg, 5);
+                    background-color: lighten($color-bg, 10);
                 }
 
                 // image of the user
@@ -73,11 +73,17 @@ div#timeline-container {
                     width:100%;
                     margin-left: 20px;
 
+                    // delete
                     a.btn.btn-danger {
                         float: right;
                         color: rgb(189, 33, 48);
                         background-color: $color-bg;
                         transform: scale(.70);
+
+                        &:hover {
+                            background-color: $color-delete-btn-font;
+                            color: whitesmoke;
+                        }
                     }
                 }
             }

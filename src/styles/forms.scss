@@ -1,7 +1,31 @@
 div#form-container {
     margin: $distance-to-navbar-and-footer;
 
-    form#message-input {
+    input {
+        border-color: $hover-color;
+        background-color: $color-bg;
+        color: whitesmoke;
+        margin-bottom: 20px;
+        transition: border-color, background-color 250ms linear 0ms;
 
+        &:focus {
+            box-shadow: none;
+            border-color: $hover-color;
+            background-color: $hover-color;
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 12.5px;
+        border-color: $focus-color;
+        background-color: $focus-color;
+        margin: 20px 0px;
+        text-transform: uppercase;
+
+        &:hover {
+            border-color: $hover-color;
+            background-color: $hover-color;
+        }
     }
 }

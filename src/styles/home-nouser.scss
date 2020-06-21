@@ -1,4 +1,26 @@
 // home w/o any logged in users
 div.home-hero {
-    margin: $distance-to-navbar-and-footer;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 12.5px;
+    height: 50vh;
+    background-color: $focus-color;
+    border-radius: $border-radius;
+
+    h1, h4, button {
+        margin-left: 50px;
+    }
+
+    button {
+        padding: 12.5px;
+        border-color: $color-bg;
+        background-color: $color-bg;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: $hover-color;
+            border-color: $hover-color;
+        }
+    }
 }

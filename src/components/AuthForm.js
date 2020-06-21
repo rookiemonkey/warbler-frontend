@@ -32,7 +32,7 @@ class AuthForm extends Component {
         return (
             <div className="row justify-content-md-center text-center" id="form-container">
                 <div className="col-md-6">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} autocomplete="off">
 
                         {/* header */}
                         {!this.props.signup && <h2>Welcome Back</h2>}
@@ -49,6 +49,7 @@ class AuthForm extends Component {
                             value={email}
                             required={true}
                             min="8"
+                            autocomplete="off"
                             onChange={this.handleChange}
                         ></input>
 
@@ -86,6 +87,7 @@ class AuthForm extends Component {
                                     className="form-control"
                                     value={username}
                                     required={true}
+                                    autocomplete="off"
                                     onChange={this.handleChange}
                                 ></input>
 

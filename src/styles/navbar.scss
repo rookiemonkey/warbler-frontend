@@ -30,11 +30,12 @@ nav#navbar-outer {
                     width: 25px;
                     height: auto;
                     padding: 10px;
+                    border-radius: $border-radius;
                     transition: background-color 250ms linear 0ms;
 
                     &:hover {
                         text-decoration: none;
-                        background-color: lighten($color-bg, 5);
+                        background-color: $hover-color;
                     }
                 }
             }
