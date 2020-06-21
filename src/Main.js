@@ -5,8 +5,10 @@ import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
 import MessageForm from './components/MessageForm.js';
 import isLoggedIn from "./middleware/isLoggedIn";
+import wasLoggedIn from "./middleware/wasLoggedIn";
 import authenticate from "./helpers/authenticate";
 import flashError from "./helpers/flashError";
+import setSession from './store/actions/session';
 
 const Main = props => {
     const { authenticate } = props;
@@ -15,6 +17,14 @@ const Main = props => {
 
     // removes the error after a few minutes
     if(props.error != null) {flashError(deleteError, dispatch, 2500)}
+
+    // check local storage if the user was logged in and accidentally refresh the page
+    if(props.user.isAuthenticated === false && localStorage.getItem("token") !== null) {
+        const t = localStorage.getItem("token")
+        const u = wasLoggedIn(t);
+        dispatch(setSession(u));
+    }
+
 
     return (
         <div className="container">
