@@ -3,7 +3,7 @@ div#timeline-container {
     justify-content: center;
     margin: $distance-to-navbar-and-footer;
 
-    // aside
+    // aside================================================
     aside#aside-timeline-outer {
         position: relative;
         width: 500px;
@@ -32,7 +32,7 @@ div#timeline-container {
         }
     }
 
-    // message form
+    // message form ========================================
     div#form-container.message-form-timeline-container {
 
         h2.message-form-timeline-header {
@@ -41,14 +41,18 @@ div#timeline-container {
 
         input#message-input.form-control.message-form-timeline-input {
             margin: 0px;
+
+            &:invalid { box-shadow: none;  }
         }
 
         button#message-button.btn.btn-success.pull-right.message-form-timeline-button {
             margin: 5px 0px;
+
+            &:focus { box-shadow: none; }
         }
     }
 
-    // messages container
+    // messages container ==================================
     div#message-list {
         background-color: $color-bg;
 

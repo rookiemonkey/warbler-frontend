@@ -8,3 +8,5 @@ signin
     -- db rejects wrong email, but error is internal server error.. change it to "wrong u/pw" instead
 
 instead of a link for photo how about upload instead?
+
+new post route can be the profile page
