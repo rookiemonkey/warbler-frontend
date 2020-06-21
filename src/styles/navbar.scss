@@ -1,0 +1,43 @@
+// navbar
+nav#navbar-outer {
+    background-color: $color-bg;
+
+    div#navbar-inner {
+        margin: 0px 15%;
+
+            // navbar warbler logo
+            span#warbler-logo-container {
+
+                span#warbler {
+                    position: relative;
+                    top: 5px;
+                    margin-left: 10px;
+                    color: whitesmoke;
+                }
+            }
+
+            // navbar options
+            ul {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+
+            li {
+                margin: 0px 0px 0px 2.5%;
+
+                a {
+                    color: whitesmoke;
+                    width: 25px;
+                    height: auto;
+                    padding: 10px;
+                    transition: background-color 250ms linear 0ms;
+
+                    &:hover {
+                        text-decoration: none;
+                        background-color: lighten($color-bg, 5);
+                    }
+                }
+            }
+        }
+    }
+}

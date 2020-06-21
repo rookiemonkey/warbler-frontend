@@ -1,0 +1,86 @@
+// home w/ user - shows profile aside and message timeline
+div#timeline-container {
+    justify-content: center;
+    margin: $distance-to-navbar-and-footer;
+
+    // aside
+    aside#aside-timeline-outer {
+        position: relative;
+        width: 500px;
+
+        div#aside-timeline-middle {
+            position: sticky;
+            top: $distance-to-window-aside;
+
+            div#aside-timeline-inner {
+
+                h3 { font-size: 1.1rem; }
+
+                h6 { font-size: .9rem;  }
+
+                ul {
+                    list-style-type: none;
+                    padding: 0px;
+
+                    li {
+                        font-size: .75rem;
+
+                        span { font-weight: 800  }
+                    }
+                }
+            }
+        }
+    }
+
+    // messages container
+    div#message-list {
+        background-color: $color-bg;
+
+        div#message-item-container {
+            border: {
+                left: 1px solid $color-border;
+                right: 1px solid $color-border;
+            }
+
+                &:first-child {
+                    border-top: 1px solid $color-border;
+                }
+
+                &:last-child {
+                    border-bottom: 1px solid $color-border;
+                }
+
+            // each message box
+            li#message-item {
+                background-color: $color-bg;
+                display: flex;
+                align-item: flex-start;
+                padding: 7px 20px;
+
+                &:hover {
+                    background-color: lighten($color-bg, 5);
+                }
+
+                // image of the user
+                img {
+                    border-radius: 50px;
+                    object-fit: cover;
+                }
+
+                // message body
+                div.message-area {
+                    background-color: transparent;
+                    width:100%;
+                    margin-left: 20px;
+
+                    a.btn.btn-danger {
+                        float: right;
+                        color: rgb(189, 33, 48);
+                        background-color: $color-bg;
+                        transform: scale(.70);
+                    }
+                }
+            }
+        }
+    }
+}
