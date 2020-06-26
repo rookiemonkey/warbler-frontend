@@ -11,10 +11,6 @@ class MessageList extends Component {
     this.props.fetchMessage();
   }
 
-  componentDidUpdate() {
-    this.props.fetchMessage();
-  }
-
   render() {
     const { messages, deleteMessage } = this.props;
     let messageList = messages.map(m => (

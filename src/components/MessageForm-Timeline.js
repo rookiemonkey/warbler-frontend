@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import postNewMessage from '../helpers/postMessage';
+import fetchMessage from "../helpers/setMessages";
 
 class MessageFormTimeline extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class MessageFormTimeline extends Component {
     handleNewMessage = e => {
         e.preventDefault();
         this.props.postNewMessage(this.state.message);
-        this.setState({ message: '' });
+        this.setState({ message: '' }, () => { this.props.fetchMessage() });
     }
 
     render() {
@@ -63,4 +64,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { postNewMessage })(MessageFormTimeline)
+export default connect(mapStateToProps, { postNewMessage, fetchMessage })(MessageFormTimeline)
