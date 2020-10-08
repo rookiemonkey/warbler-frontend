@@ -1,7 +1,6 @@
 import { POSTapiCall } from '../services/api';
 import { addError } from '../store/actions/error';
-const API_URL = `https://warbler-backend-api.herokuapp.com`; // `${API_URL}/api/auth/${id}/message`
-// const API_LOCAL = 'http://localhost:8081' // `${API_LOCAL}/api/auth/${id}/message`
+const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
 
 const postNewMessage = text => (dispatch, getState) => {
 
@@ -13,7 +12,7 @@ const postNewMessage = text => (dispatch, getState) => {
 
     // call POSTapiCALL will return a promise
     return POSTapiCall(`${API_URL}/api/auth/${id}/message`, { text })
-        .then(res => {} )
+        .then(res => { })
         .catch(err => dispatch(addError(err.message)))
 }
 
