@@ -2,7 +2,7 @@ import { addError, removeError } from '../store/actions/error';
 import setSession from '../store/actions/session';
 import { POSTapiCall } from '../services/api';
 import setTokenHeader from './setTokenHeader';
-const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
+import { API_URL } from './_variables';
 
 const authenticate = (type, userData) => {
 

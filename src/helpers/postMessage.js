@@ -1,6 +1,6 @@
 import { POSTapiCall } from '../services/api';
 import { addError } from '../store/actions/error';
-const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
+import { API_URL } from './_variables';
 
 const postNewMessage = text => (dispatch, getState) => {
 

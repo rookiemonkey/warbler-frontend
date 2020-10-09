@@ -1,7 +1,7 @@
 import { addError } from "../store/actions/error";
 import { userMessages } from "../store/actions/messages";
 import { GETapiCall } from "../services/api";
-const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
+import { API_URL } from './_variables';
 
 const fetchUserMessage = userid => {
   return dispatch => {

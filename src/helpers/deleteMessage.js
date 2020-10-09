@@ -1,7 +1,7 @@
 import { removeMessage } from '../store/actions/messages';
 import { addError } from '../store/actions/error';
 import { DELETEapiCall } from '../services/api';
-const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
+import { API_URL } from './_variables';
 
 const deleteMessage = (userID, messageID) => {
     return dispatch => {
