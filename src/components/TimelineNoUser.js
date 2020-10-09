@@ -4,16 +4,46 @@ import { Link } from 'react-router-dom';
 import MessageItem from './mini/MessageItem';
 import Loader from './mini/Loader';
 import fetchMessage from "../helpers/setMessages";
+import fetchCategoricalNews from "../helpers/setNewsCategories";
+import fetchGlobalNews from "../helpers/setNewsGlobal";
+import fetchLocalNews from "../helpers/setNewsLocal";
 
 const TimelineNoUser = () => {
     const dispatch = useDispatch();
     const messages = useSelector(state => state.messageReducer)
     const [messagesIsLoading, setMessagesIsLoading] = useState(true);
+    const [globalNewsIsLoading, setGlobalNewsIsLoading] = useState(true);
+    const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
+    const [categoricalNewsIsLoading, setCategoricalNewsIsLoading] = useState(true);
 
     useEffect(() => {
         (async function () {
+            const isThereLocal = localStorage.getItem('localNews');
+            const isThereGlobal = localStorage.getItem('globalNews');
+            const isThereCategorical = localStorage.getItem('categoricalNews');
+
             await dispatch(await fetchMessage());
             await setMessagesIsLoading(false);
+
+            console.log('isThereLocal', isThereLocal)
+            console.log('isThereGlobal', isThereGlobal)
+            console.log('isThereCategorical', isThereCategorical)
+
+            if (!isThereGlobal) {
+                await dispatch(await fetchGlobalNews());
+                await setGlobalNewsIsLoading(false);
+            } else { await setGlobalNewsIsLoading(false); }
+
+            if (!isThereLocal) {
+                await dispatch(await fetchLocalNews());
+                await setLocalNewsIsLoading(false);
+            } else { await setLocalNewsIsLoading(false); }
+
+            if (!isThereCategorical) {
+                await dispatch(await fetchCategoricalNews());
+                await setCategoricalNewsIsLoading(false);
+            } else { await setCategoricalNewsIsLoading(false); }
+
         })()
     }, [])
 

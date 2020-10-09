@@ -14,7 +14,7 @@ export const setGlobalNews = news => {
     }
 }
 
-export const setGlobalNews = news => {
+export const setCategoricalNews = news => {
     return {
         type: LOAD_CATEGORICALNEWS,
         news
