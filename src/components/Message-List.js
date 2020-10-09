@@ -4,11 +4,19 @@ import fetchMessage from "../helpers/setMessages";
 import deleteMessage from '../helpers/deleteMessage';
 import MessageItem from "./Message-Item";
 import MessageFormTimeline from "./MessageForm-Timeline";
+import Loader from './mini/Loader';
 
 class MessageList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    }
+  }
 
-  componentDidMount() {
-    this.props.fetchMessage();
+  async componentDidMount() {
+    await this.props.fetchMessage();
+    await this.setState({ ...this.state, isLoading: false })
   }
 
   render() {
@@ -21,18 +29,20 @@ class MessageList extends Component {
           <MessageFormTimeline />
           <ul className="list-group" id="messages">
             {
-              messages.map(m => (
-                <MessageItem
-                  key={m._id}
-                  date={m.createAt}
-                  text={m.text}
-                  username={m.user.username}
-                  messageID={m._id}
-                  authorID={m.user._id}
-                  profileImageUrl={m.user.profilePicture}
-                  deleteMessage={deleteMessage}
-                />
-              ))
+              !this.state.isLoading
+                ? messages.map(m => (
+                  <MessageItem
+                    key={m._id}
+                    date={m.createAt}
+                    text={m.text}
+                    username={m.user.username}
+                    messageID={m._id}
+                    authorID={m.user._id}
+                    profileImageUrl={m.user.profilePicture}
+                    deleteMessage={deleteMessage}
+                  />
+                ))
+                : <Loader />
             }
           </ul>
         </div>
