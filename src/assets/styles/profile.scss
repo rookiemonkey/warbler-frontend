@@ -1,0 +1,49 @@
+.profile_home {
+    background-image: url('../images/default-profile-header.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+}
+
+.profile_home_avatar {
+    position: relative;
+    top: 50%;
+    border-radius: 100%;
+    border: 10px solid $color-bg;
+    width: 150px;
+    height: 150px;
+}
+
+#profile-timeline-container {
+    justify-content: center;
+    margin: $distance-to-navbar-and-footer;
+}
+
+#aside-profile-timeline-outer {
+    position: relative;
+    width: 500px;
+}
+
+div#aside-profile-timeline-middle {
+    position: sticky;
+    top: $distance-to-window-aside;
+}
+
+div#aside-profile-timeline-inner {
+
+    h3 { font-size: 1.1rem; }
+
+    h6 { font-size: .9rem;  }
+
+    ul {
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+            font-size: .75rem;
+
+            span { font-weight: 800  }
+        }
+    }
+}

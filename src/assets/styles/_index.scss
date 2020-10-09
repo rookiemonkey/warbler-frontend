@@ -16,7 +16,13 @@ body {
     color: whitesmoke;
 }
 
-@import './styles/navbar.scss';
-@import './styles/home-timeline.scss';
-@import './styles/home-nouser.scss';
-@import './styles/forms.scss';
+ul, ul > li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+@import './navbar.scss';
+@import './home-timeline.scss';
+@import './home-nouser.scss';
+@import './forms.scss';
+@import './profile.scss';

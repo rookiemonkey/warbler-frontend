@@ -10,20 +10,20 @@ const UserAside = () => {
 
     return (
 
-        <aside className="col-sm-3" id="aside-timeline-outer">
+        <aside className="col-sm-4" id="aside-timeline-outer">
             <div className="panel panel-default" id="aside-timeline-middle">
                 <div id="aside-timeline-inner">
                     <img
-                        className="img-thumbnail"
+                        className="img-thumbnail mb-2"
                         src={profilePicture}
                         alt={username}
-                        style={{width: "200px", height: "auto"}}
+                        style={{ width: "200px", height: "auto" }}
                         onError={setDefaultImage}
                     />
-                    <h3><strong>@{ username }</strong></h3>
-                    <h6><em>Since: <Moment format='Do MMM YYYY' >{ accountCreation }</Moment> </em></h6>
+                    <h3><strong>@{username}</strong></h3>
+                    <h6><em>Since: <Moment format='Do MMM YYYY' >{accountCreation}</Moment> </em></h6>
                     <ul>
-                        <li><span>Email: </span> { email }</li>
+                        <li>{email}</li>
                     </ul>
                 </div>
             </div>

@@ -7,7 +7,8 @@ class AuthForm extends Component {
             email: '',
             username: '',
             password: '',
-            profilePicture: ''
+            profilePicture: '',
+            confirmPassword: ''
         }
     }
 
@@ -21,18 +22,22 @@ class AuthForm extends Component {
         const authType = this.props.signup ? 'signup' : 'signin'
         authenticate(authType, this.state)
             .then(res => { this.props.history.push('/'); })
-            .catch(err => { console.error(err) })
+            .catch(err => { console.error(err.meessage) })
     }
 
     render() {
-        const { email, username, password, profilePicture } = this.state
+        const { email, username, password, confirmPassword, profilePicture } = this.state
         const { error } = this.props
 
 
         return (
             <div className="row justify-content-md-center text-center" id="form-container">
                 <div className="col-md-6">
-                    <form onSubmit={this.handleSubmit} autocomplete="off">
+                    <form
+                        onSubmit={this.handleSubmit}
+                        autoComplete="off"
+                        encType="multipart/form-data"
+                    >
 
                         {/* header */}
                         {!this.props.signup && <h2>Welcome Back</h2>}
@@ -49,7 +54,7 @@ class AuthForm extends Component {
                             value={email}
                             required={true}
                             min="8"
-                            autocomplete="off"
+                            autoComplete="off"
                             onChange={this.handleChange}
                         ></input>
 
@@ -78,6 +83,19 @@ class AuthForm extends Component {
                         {this.props.signup && (
                             <div>
 
+                                {/* confirm password field */}
+                                <label htmlFor="password">Confirm Password:</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="confirmPassword"
+                                    className="form-control"
+                                    value={confirmPassword}
+                                    required={true}
+                                    onChange={this.handleChange}
+                                ></input>
+
+
                                 {/* email field */}
                                 <label htmlFor="username">Username:</label>
                                 <input
@@ -87,14 +105,14 @@ class AuthForm extends Component {
                                     className="form-control"
                                     value={username}
                                     required={true}
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     onChange={this.handleChange}
                                 ></input>
 
                                 {/* profilePicture field */}
-                                <label htmlFor="profilePicture">Profile Picture URL:</label>
+                                <label htmlFor="profilePicture">Profile Picture:</label>
                                 <input
-                                    type="text"
+                                    type="file"
                                     id="profilePicture"
                                     name="profilePicture"
                                     className="form-control"
