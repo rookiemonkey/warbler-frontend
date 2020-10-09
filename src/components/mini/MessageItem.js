@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import deleteMessage from '../../helpers/deleteMessage';
 import setDefaultImage from '../../helpers/setDefaultImage';
 
@@ -11,7 +13,7 @@ const MessageItem = props => {
     const userID = useSelector(state => state.sessionReducer.user._id)
 
     const handleDelete = useCallback(() =>
-        dispatch(deleteMessage(userID, messageID))
+        dispatch(deleteMessage(userID, messageID)), []
     )
 
     return (
@@ -29,6 +31,20 @@ const MessageItem = props => {
                     onError={setDefaultImage}
                 />
 
+                {
+                    (authorID == userID)    
+                        ? <DropdownButton
+                            menuAlign="right"
+                            id="dropdown-basic-button"
+                            title=""
+                            className="dropdown-custom"
+                        >
+                            <Dropdown.Item onClick={handleDelete} >Delete</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
+                        </DropdownButton>
+                        : null
+                }   
+
                 <div className="message-area">
 
                     <Link to="/">@{username} &nbsp;</Link>
@@ -42,20 +58,11 @@ const MessageItem = props => {
 
                     <p>{text}</p>
 
-                    {
-                        (authorID == userID)
-                            ? (<a
-                                className="btn btn-danger"
-                                onClick={handleDelete}
-                            >Delete</a>)
-                            : null
-                    }
-
                 </div>
 
             </li>
 
-        </div>
+        </div >
 
     )
 }

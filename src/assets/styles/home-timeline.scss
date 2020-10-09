@@ -80,8 +80,8 @@ div#timeline-container {
             li#message-item {
                 background-color: $color-bg;
                 display: flex;
-                align-item: flex-start;
-                padding: 7px 20px;
+                align-items: flex-start;
+                padding: 40px 20px 20px 20px;
 
                 &:hover {
                     background-color: lighten($color-bg, 10);

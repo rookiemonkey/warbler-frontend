@@ -1,0 +1,17 @@
+.dropdown-custom {
+    position: absolute !important;
+    left: 90% !important;
+    top: 5px !important;
+
+
+    button {
+        background-color: darken($color-bg, 7.5) !important;
+        box-shadow: none !important; 
+        border: none !important;
+
+        &:focus, &action {
+            box-shadow: none !important; 
+            border: none !important;
+        }
+    }
+}
