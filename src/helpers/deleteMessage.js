@@ -5,7 +5,7 @@ const API_URL = `https://krrb-prod-warbler-backend.herokuapp.com`;
 
 const deleteMessage = (userID, messageID) => {
     return dispatch => {
-        return DELETEapiCall(`${API_URL}/api/auth/${userID}/message/${messageID}`, null)
+        return DELETEapiCall(`${API_URL}/api/message/${userID}/${messageID}`, null)
             .then(res => { dispatch(removeMessage(messageID)) })
             .catch(err => { dispatch(addError(err.Message)) })
     }
