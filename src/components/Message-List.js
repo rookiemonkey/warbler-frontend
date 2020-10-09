@@ -13,25 +13,27 @@ class MessageList extends Component {
 
   render() {
     const { messages, deleteMessage } = this.props;
-    let messageList = messages.map(m => (
-      <MessageItem
-        key={m._id}
-        date={m.createAt}
-        text={m.text}
-        username={m.user.username}
-        messageID={m._id}
-        authorID={m.user._id}
-        profileImageUrl={m.user.profilePicture}
-        deleteMessage={deleteMessage}
-      />
-    ));
+
     return (
 
       <div className="row col-sm-9" id="message-list">
         <div className="offset-2 col-sm-10" id="message-list-inner">
           <MessageFormTimeline />
           <ul className="list-group" id="messages">
-            {messageList}
+            {
+              messages.map(m => (
+                <MessageItem
+                  key={m._id}
+                  date={m.createAt}
+                  text={m.text}
+                  username={m.user.username}
+                  messageID={m._id}
+                  authorID={m.user._id}
+                  profileImageUrl={m.user.profilePicture}
+                  deleteMessage={deleteMessage}
+                />
+              ))
+            }
           </ul>
         </div>
       </div>

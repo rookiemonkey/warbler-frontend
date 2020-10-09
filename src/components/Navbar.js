@@ -25,7 +25,7 @@ const NavigationBar = () => {
                         ? (<ul className="nav navbar-nav navbar-right">
                             <li><Link to="/" onClick={logout}>Log out</Link></li>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to={`/users/${user.id}/profile`}>Profile</Link></li>
+                            <li><Link to={`/users/${user._id}/profile`}>Profile</Link></li>
                         </ul>
                         )
                         : (

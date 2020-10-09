@@ -1,0 +1,20 @@
+$loader-size: 100px;
+$loader-container: $loader-size + 100px; 
+
+.loader_container {
+    width: 100%;
+    min-height: $loader-container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loader_text {
+    margin-top: 10px;
+}
+
+.loader {
+    width: $loader-size;
+    height: $loader-size;
+}
