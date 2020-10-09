@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MessageItem from './mini/MessageItem';
+import NewsItem from './mini/NewsItem';
 import Loader from './mini/Loader';
 import fetchMessage from "../helpers/setMessages";
 import fetchCategoricalNews from "../helpers/setNewsCategories";
@@ -11,6 +12,8 @@ import fetchLocalNews from "../helpers/setNewsLocal";
 const TimelineNoUser = () => {
     const dispatch = useDispatch();
     const messages = useSelector(state => state.messageReducer)
+    const localNews = useSelector(state => state.localNewsReducer)
+    const globalNews = useSelector(state => state.globalNewsReducer)
     const [messagesIsLoading, setMessagesIsLoading] = useState(true);
     const [globalNewsIsLoading, setGlobalNewsIsLoading] = useState(true);
     const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
@@ -18,31 +21,18 @@ const TimelineNoUser = () => {
 
     useEffect(() => {
         (async function () {
-            const isThereLocal = localStorage.getItem('localNews');
-            const isThereGlobal = localStorage.getItem('globalNews');
-            const isThereCategorical = localStorage.getItem('categoricalNews');
 
             await dispatch(await fetchMessage());
             await setMessagesIsLoading(false);
 
-            console.log('isThereLocal', isThereLocal)
-            console.log('isThereGlobal', isThereGlobal)
-            console.log('isThereCategorical', isThereCategorical)
+            await dispatch(await fetchLocalNews());
+            await setLocalNewsIsLoading(false);
 
-            if (!isThereGlobal) {
-                await dispatch(await fetchGlobalNews());
-                await setGlobalNewsIsLoading(false);
-            } else { await setGlobalNewsIsLoading(false); }
+            await dispatch(await fetchGlobalNews());
+            await setGlobalNewsIsLoading(false);
 
-            if (!isThereLocal) {
-                await dispatch(await fetchLocalNews());
-                await setLocalNewsIsLoading(false);
-            } else { await setLocalNewsIsLoading(false); }
-
-            if (!isThereCategorical) {
-                await dispatch(await fetchCategoricalNews());
-                await setCategoricalNewsIsLoading(false);
-            } else { await setCategoricalNewsIsLoading(false); }
+            await dispatch(await fetchCategoricalNews());
+            await setCategoricalNewsIsLoading(false);
 
         })()
     }, [])
@@ -82,7 +72,43 @@ const TimelineNoUser = () => {
                     </div>
 
                     <div className="col-sm-5">
-                        <h3>Local</h3>
+                        <h3>Local News</h3>
+                        <ul className="list-group" id="timelinenouser-messages">
+                            {
+                                !localNewsIsLoading
+                                    ? localNews.map(news => (
+                                        <NewsItem
+                                            key={news.publishedAt}
+                                            source={news.source}
+                                            title={news.title}
+                                            description={news.description}
+                                            url={news.url}
+                                            urlToImage={news.urlToImage}
+                                            publishedAt={news.publishedAt}
+                                        />
+                                    ))
+                                    : <Loader />
+                            }
+                        </ul>
+
+                        <h3 className="mt-5">Global News</h3>
+                        <ul className="list-group" id="timelinenouser-messages">
+                            {
+                                !globalNewsIsLoading
+                                    ? globalNews.map(news => (
+                                        <NewsItem
+                                            key={news.publishedAt}
+                                            source={news.source}
+                                            title={news.title}
+                                            description={news.description}
+                                            url={news.url}
+                                            urlToImage={news.urlToImage}
+                                            publishedAt={news.publishedAt}
+                                        />
+                                    ))
+                                    : <Loader />
+                            }
+                        </ul>
                     </div>
                 </div>
 

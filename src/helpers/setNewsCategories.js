@@ -4,7 +4,13 @@ import { GETapiCall } from "../services/api";
 import { API_URL } from './_variables';
 
 const fetchCategoricalNews = () => {
+  const dataOnLocalStorage = localStorage.getItem('categoricalNews');
+
   return dispatch => {
+
+    if (dataOnLocalStorage) {
+      return dispatch(setCategoricalNews(JSON.parse(dataOnLocalStorage)))
+    }
 
     // call the api, returns a promise
     return GETapiCall(`${API_URL}/api/news/categories`)

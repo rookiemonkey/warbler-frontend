@@ -1,8 +1,13 @@
+import { act } from 'react-dom/test-utils';
 import { LOAD_LOCALNEWS } from '../actions/actionTypes';
 
 const localNewsReducer = (state = [], action) => {
     switch (action.type) {
         case LOAD_LOCALNEWS:
+
+            // since the one saved on local storages is already parsed
+            const dataOnLocalStorage = localStorage.getItem('localNews');
+            if (dataOnLocalStorage) { return [...action.news]; }
 
             // save to localstorage
             const stringified = JSON.stringify([...action.news.local_articles])
