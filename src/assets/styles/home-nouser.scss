@@ -89,4 +89,35 @@ header.home-hero {
         }
         }
     }
+
+    #timelinenouser-news-list {
+        #timelinenouser-news {
+            padding-right: 0px !important;
+            border: 1px solid $color-border;
+
+            #news-item-container {
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    &:hover {
+                        color: white;
+                    }
+
+                    &:hover > #news-item  {
+                        background-color: $hover-color !important;
+                    }
+                }
+
+                #news-item{
+                    background-color: $color-bg !important;
+
+                    .news-item-image {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
 }

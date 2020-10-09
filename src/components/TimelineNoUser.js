@@ -11,9 +11,10 @@ import fetchLocalNews from "../helpers/setNewsLocal";
 
 const TimelineNoUser = () => {
     const dispatch = useDispatch();
-    const messages = useSelector(state => state.messageReducer)
-    const localNews = useSelector(state => state.localNewsReducer)
-    const globalNews = useSelector(state => state.globalNewsReducer)
+    const messages = useSelector(state => state.messageReducer);
+    const localNews = useSelector(state => state.localNewsReducer);
+    const globalNews = useSelector(state => state.globalNewsReducer);
+    const categoricalNews = useSelector(state => state.categoricalNewsReducer);
     const [messagesIsLoading, setMessagesIsLoading] = useState(true);
     const [globalNewsIsLoading, setGlobalNewsIsLoading] = useState(true);
     const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
@@ -71,9 +72,9 @@ const TimelineNoUser = () => {
                         </ul>
                     </div>
 
-                    <div className="col-sm-5">
+                    <div className="col-sm-5" id="timelinenouser-news-list">
                         <h3>Local News</h3>
-                        <ul className="list-group" id="timelinenouser-messages">
+                        <ul className="list-group" id="timelinenouser-news">
                             {
                                 !localNewsIsLoading
                                     ? localNews.map(news => (
@@ -92,7 +93,7 @@ const TimelineNoUser = () => {
                         </ul>
 
                         <h3 className="mt-5">Global News</h3>
-                        <ul className="list-group" id="timelinenouser-messages">
+                        <ul className="list-group" id="timelinenouser-news">
                             {
                                 !globalNewsIsLoading
                                     ? globalNews.map(news => (
@@ -109,9 +110,35 @@ const TimelineNoUser = () => {
                                     : <Loader />
                             }
                         </ul>
+
+                        {
+                            !categoricalNewsIsLoading
+                                ? Object.keys(categoricalNews).map(category => (
+                                    <React.Fragment key={category}>
+                                        <h3 className="mt-5">
+                                            {
+                                                category
+                                                    .charAt(0)
+                                                    .toUpperCase() + category.slice(1)
+                                            }
+                                            <span> </span>News</h3>
+                                        <ul className="list-group" id="timelinenouser-news">
+                                            <NewsItem
+                                                key={categoricalNews[category].publishedAt}
+                                                source={categoricalNews[category].source}
+                                                title={categoricalNews[category].title}
+                                                description={categoricalNews[category].description}
+                                                url={categoricalNews[category].url}
+                                                urlToImage={categoricalNews[category].urlToImage}
+                                                publishedAt={categoricalNews[category].publishedAt}
+                                            />
+                                        </ul>
+                                    </React.Fragment>
+                                ))
+                                : <Loader />
+                        }
                     </div>
                 </div>
-
             </div>
 
         </React.Fragment>

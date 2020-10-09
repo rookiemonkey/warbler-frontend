@@ -9,17 +9,15 @@ const NewsItem = props => {
 
     return (
 
-        <div id="message-item-container">
+        <div id="news-item-container">
 
-            <a href={url} rel="noopener noreferrer">
-                <li className="list-group-item" id="message-item">
+            <a href={url} rel="noopener noreferrer" target="_blank">
+                <li className="list-group-item" id="news-item">
 
                     <img
-                        className="timeline-image"
+                        className="news-item-image"
                         src={urlToImage}
                         alt={title}
-                        height='100px'
-                        width='100px'
                         onError={setDefaultImage}
                     />
 
@@ -31,7 +29,7 @@ const NewsItem = props => {
                                 format='Do MMM YYYY'
                             >{publishedAt}</Moment>
 
-                        by: {news_source}
+                        &nbsp; by {news_source}
                         </span>
 
                         <p>{description}</p>
