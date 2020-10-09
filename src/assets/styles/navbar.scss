@@ -6,7 +6,7 @@ nav#navbar-outer {
         margin: 0px 20%;
 
             // navbar warbler logo
-            span#warbler-logo-container {
+            a#warbler-logo-container {
 
                 span#warbler {
                     position: relative;
@@ -43,6 +43,44 @@ nav#navbar-outer {
                         outline: none;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    nav#navbar-outer.navbar.navbar-expand-md {
+        div#navbar-inner.container-fluid {
+            margin: 0px 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    nav#navbar-outer.navbar.navbar-expand-md {
+        div#navbar-inner.container-fluid {
+            ul {
+                flex-direction: column !important;
+            }
+
+            li {
+                margin: 5px 0px;
+
+                a {
+                    &:hover {
+                        text-decoration: none;
+                        background-color: transparent;
+                    }
+
+                    &:active {
+                        background-color: transparent;
+                        outline: none;
+                    }
+                }
+            }
+
+            button.navbar-toggler:focus {
+                outline: none !important;
             }
         }
     }
