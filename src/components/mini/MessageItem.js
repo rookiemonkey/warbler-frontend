@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
-import setDefaultImage from '../helpers/setDefaultImage';
+import setDefaultImage from '../../helpers/setDefaultImage';
 
 const MessageItem = ({ date, profileImageUrl, text, username, deleteMessage, messageID, authorID }) => {
 
-    const userID = useSelector(state => state.sessionReducer.user.id)
+    const userID = useSelector(state => state.sessionReducer.user._id)
 
     return (
 

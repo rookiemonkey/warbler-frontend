@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import postNewMessage from '../helpers/postMessage';
-import fetchMessage from "../helpers/setMessages";
+import postNewMessage from '../../helpers/postMessage';
+import fetchMessage from "../../helpers/setMessages";
 
-class MessageFormTimeline extends Component {
+class MessageForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -34,21 +34,21 @@ class MessageFormTimeline extends Component {
                     onSubmit={this.handleNewMessage}
                 >
 
-                <input
-                    type="text"
-                    id="message-input"
-                    name="message"
-                    className="form-control message-form-timeline-input"
-                    value={this.state.message}
-                    onChange={this.handleChange}
-                    required={true}
-                />
+                    <input
+                        type="text"
+                        id="message-input"
+                        name="message"
+                        className="form-control message-form-timeline-input"
+                        value={this.state.message}
+                        onChange={this.handleChange}
+                        required={true}
+                    />
 
-                <button
-                    id="message-button"
-                    className="btn btn-success pull-right message-form-timeline-button"
-                    type="submit"
-                >Post Message</button>
+                    <button
+                        id="message-button"
+                        className="btn btn-success pull-right message-form-timeline-button"
+                        type="submit"
+                    >Post Message</button>
 
                 </form>
 
@@ -64,4 +64,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { postNewMessage, fetchMessage })(MessageFormTimeline)
+export default connect(mapStateToProps, { postNewMessage, fetchMessage })(MessageForm)

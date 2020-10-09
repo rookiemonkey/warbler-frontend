@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import fetchMessage from "../helpers/setMessages";
-import deleteMessage from '../helpers/deleteMessage';
-import MessageItem from "./Message-Item";
-import MessageFormTimeline from "./MessageForm-Timeline";
-import Loader from './mini/Loader';
+import fetchMessage from "../../helpers/setMessages";
+import deleteMessage from '../../helpers/deleteMessage';
+import MessageItem from "./MessageItem";
+import MessageForm from "./MessageForm";
+import Loader from './Loader';
 
-class MessageList extends Component {
+class TimelineMessages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +26,7 @@ class MessageList extends Component {
 
       <div className="row col-sm-9" id="message-list">
         <div className="offset-2 col-sm-10" id="message-list-inner">
-          <MessageFormTimeline />
+          <MessageForm />
           <ul className="list-group" id="messages">
             {
               !this.state.isLoading
@@ -58,4 +58,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchMessage, deleteMessage })(MessageList);
+export default connect(mapStateToProps, { fetchMessage, deleteMessage })(TimelineMessages);

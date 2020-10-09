@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Moment from 'react-moment';
 import fetchUserMessage from "../helpers/setMessagesUser";
 import deleteMessage from '../helpers/deleteMessage';
-import MessageFormTimeline from "./MessageForm-Timeline";
-import MessageItem from "./Message-Item";
+import MessageForm from "./mini/MessageForm";
+import MessageItem from "./mini/MessageItem";
 import Loader from './mini/Loader';
 
 const Profile = () => {
@@ -59,7 +59,7 @@ const Profile = () => {
 
                     <div className="row col-sm-8" id="message-list">
                         <div className="col-sm-12">
-                            <MessageFormTimeline />
+                            <MessageForm />
                             <ul className="list-group" id="messages">
                                 {
                                     !isLoading

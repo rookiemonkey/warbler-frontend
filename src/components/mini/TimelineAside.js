@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Moment from 'react-moment';
-import setDefaultImage from '../helpers/setDefaultImage';
+import setDefaultImage from '../../helpers/setDefaultImage';
 
-const UserAside = () => {
+const TimelineAside = () => {
 
     const user = useSelector(state => state.sessionReducer.user);
     const { profilePicture, username, accountCreation, email } = user;
@@ -32,4 +32,4 @@ const UserAside = () => {
     )
 }
 
-export default UserAside;
+export default TimelineAside;

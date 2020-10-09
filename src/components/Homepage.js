@@ -1,16 +1,16 @@
 import React from "react";
-import HeaderNoUser from "./HeaderNoUser";
-import MessageTimeline from "./Message-Timeline";
+import TimelineNoUser from "./TimelineNoUser";
+import Timeline from "./Timeline";
 
 const Homepage = props => {
 
     if (props.user.isAuthenticated) {
 
-        return <MessageTimeline />;
+        return <Timeline />;
 
     } else {
 
-        return <HeaderNoUser />;
+        return <TimelineNoUser />;
 
     }
 
