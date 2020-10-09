@@ -24,3 +24,69 @@ header.home-hero {
         }
     }
 }
+
+#timelinenouser-container {
+    #timelinenouser-message-list {
+        #timelinenouser-messages {
+        background-color: $color-bg;
+        padding-right: 0px !important;
+
+        div#message-list-inner {
+            padding: 0px;
+        }
+
+        div#message-item-container {
+            border: {
+                left: 1px solid $color-border;
+                right: 1px solid $color-border;
+            }
+
+                &:first-child {
+                    border-top: 1px solid $color-border;
+                }
+
+                &:last-child {
+                    border-bottom: 1px solid $color-border;
+                }
+
+            // each message box
+            li#message-item {
+                background-color: $color-bg;
+                display: flex;
+                align-items: flex-start;
+                padding: 40px 20px 20px 20px;
+
+                &:hover {
+                    background-color: lighten($color-bg, 10);
+                }
+
+                // image of the user
+                img {
+                    border-radius: 50px;
+                    object-fit: cover;
+                }
+
+                // message body
+                div.message-area {
+                    background-color: transparent;
+                    width:100%;
+                    margin-left: 20px;
+
+                    // delete
+                    a.btn.btn-danger {
+                        float: right;
+                        color: rgb(189, 33, 48);
+                        background-color: $color-bg;
+                        transform: scale(.70);
+
+                        &:hover {
+                            background-color: $color-delete-btn-font;
+                            color: whitesmoke;
+                        }
+                    }
+                }
+            }
+        }
+        }
+    }
+}
