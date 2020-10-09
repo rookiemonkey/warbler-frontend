@@ -51,7 +51,7 @@ const TimelineNoUser = () => {
 
             <div className="container mt-3 p-0" id="timelinenouser-container">
                 <div className="row">
-                    <div className="col-sm-7" id="timelinenouser-message-list">
+                    <div className="col-sm-12 col-md-7" id="timelinenouser-message-list">
                         <h3>Latest on Warbler</h3>
                         <ul className="list-group" id="timelinenouser-messages">
                             {
@@ -72,8 +72,8 @@ const TimelineNoUser = () => {
                         </ul>
                     </div>
 
-                    <div className="col-sm-5" id="timelinenouser-news-list">
-                        <h3>Local News</h3>
+                    <div className="col-sm-12 col-md-5" id="timelinenouser-news-list">
+                        <h3 className="mt-sm-5 mt-md-0">Local News</h3>
                         <ul className="list-group" id="timelinenouser-news">
                             {
                                 !localNewsIsLoading
@@ -111,32 +111,30 @@ const TimelineNoUser = () => {
                             }
                         </ul>
 
-                        {
-                            !categoricalNewsIsLoading
-                                ? Object.keys(categoricalNews).map(category => (
-                                    <React.Fragment key={category}>
-                                        <h3 className="mt-5">
-                                            {
+                        <h3 className="mt-5">Top Stories</h3>
+                        <ul className="list-group" id="timelinenouser-news">
+                            {
+                                !categoricalNewsIsLoading
+                                    ? Object.keys(categoricalNews).map(category => (
+                                        <NewsItem
+                                            label={
                                                 category
                                                     .charAt(0)
                                                     .toUpperCase() + category.slice(1)
                                             }
-                                            <span> </span>News</h3>
-                                        <ul className="list-group" id="timelinenouser-news">
-                                            <NewsItem
-                                                key={categoricalNews[category].publishedAt}
-                                                source={categoricalNews[category].source}
-                                                title={categoricalNews[category].title}
-                                                description={categoricalNews[category].description}
-                                                url={categoricalNews[category].url}
-                                                urlToImage={categoricalNews[category].urlToImage}
-                                                publishedAt={categoricalNews[category].publishedAt}
-                                            />
-                                        </ul>
-                                    </React.Fragment>
-                                ))
-                                : <Loader />
-                        }
+                                            key={categoricalNews[category].publishedAt}
+                                            source={categoricalNews[category].source}
+                                            title={categoricalNews[category].title}
+                                            description={categoricalNews[category].description}
+                                            url={categoricalNews[category].url}
+                                            urlToImage={categoricalNews[category].urlToImage}
+                                            publishedAt={categoricalNews[category].publishedAt}
+                                        />
+                                    ))
+                                    : <Loader />
+                            }
+                        </ul>
+
                     </div>
                 </div>
             </div>

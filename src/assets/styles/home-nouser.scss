@@ -5,7 +5,11 @@ header.home-hero {
     justify-content: center;
     padding: 12.5px;
     height: 50vh;
-    background-color: $focus-color;
+    background-image: url('../images/default-timline-header.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    background-blend-mode: overlay;
     border-radius: $border-radius;
 
     h1, h4, button {

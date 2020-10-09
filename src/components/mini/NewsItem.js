@@ -1,10 +1,10 @@
 import React from 'react';
 import Moment from 'react-moment';
-import setDefaultImage from '../../helpers/setDefaultImage';
+import defaultImage from '../../assets/images/default-news-picture.png';
 
 const NewsItem = props => {
 
-    const { source, title, description, url, urlToImage, publishedAt } = props;
+    const { source, title, description, url, urlToImage, publishedAt, label } = props;
     const { name: news_source } = source;
 
     return (
@@ -14,11 +14,16 @@ const NewsItem = props => {
             <a href={url} rel="noopener noreferrer" target="_blank">
                 <li className="list-group-item" id="news-item">
 
+                    {
+                        label
+                            ? <h4> {label} </h4>
+                            : null
+                    }
+
                     <img
                         className="news-item-image"
-                        src={urlToImage}
+                        src={urlToImage ? urlToImage : defaultImage}
                         alt={title}
-                        onError={setDefaultImage}
                     />
 
                     <div className="message-area">

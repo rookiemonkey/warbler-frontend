@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { LOAD_LOCALNEWS } from '../actions/actionTypes';
 
 const localNewsReducer = (state = [], action) => {
