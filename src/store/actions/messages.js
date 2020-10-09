@@ -1,4 +1,9 @@
-import { LOAD_MESSAGES, REMOVE_MESSAGE } from './actionTypes';
+import { LOAD_MESSAGES, REMOVE_MESSAGE, USER_MESSAGES } from './actionTypes';
+
+export const userMessages = messages => ({
+    type: USER_MESSAGES,
+    messages
+})
 
 export const loadMessage = messages => ({
     type: LOAD_MESSAGES,

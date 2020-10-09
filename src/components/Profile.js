@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Moment from 'react-moment';
-import fetchMessage from "../helpers/setMessages";
+import fetchUserMessage from "../helpers/setMessagesUser";
 import deleteMessage from '../helpers/deleteMessage';
 import MessageFormTimeline from "./MessageForm-Timeline";
 import MessageItem from "./Message-Item";
@@ -10,13 +10,12 @@ import Loader from './mini/Loader';
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.sessionReducer.user);
+    const userMessages = useSelector(state => state.messageReducer);
     const [isLoading, setIsLoading] = useState(true);
-    const [userMessages, setUserMessages] = useState([])
 
     useEffect(() => {
         (async function () {
-            const messages = await dispatch(fetchMessage())
-            await setUserMessages(messages.messages)
+            await dispatch(fetchUserMessage(user._id))
             await setIsLoading(false)
         })()
     }, [user])
