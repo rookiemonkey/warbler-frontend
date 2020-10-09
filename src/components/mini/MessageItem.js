@@ -56,7 +56,7 @@ const MessageItem = props => {
                         >{date}</Moment>
                     </span>
 
-                    <p>{text}</p>
+                    <p style={{ textAlign: "justify" }}>{text}</p>
 
                 </div>
 

@@ -26,7 +26,7 @@ const NewsItem = props => {
                         alt={title}
                     />
 
-                    <div className="message-area">
+                    <div className="message-area mt-3">
 
                         <span className="text-muted">
                             <Moment
@@ -37,7 +37,7 @@ const NewsItem = props => {
                         &nbsp; by {news_source}
                         </span>
 
-                        <p>{description}</p>
+                        <p style={{ textAlign: "justify" }}>{description}</p>
 
                     </div>
 

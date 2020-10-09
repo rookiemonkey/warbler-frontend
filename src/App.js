@@ -5,6 +5,7 @@ import preventTampering from "./helpers/preventTampering";
 import setTokenHeader from "./helpers/setTokenHeader";
 import store from "./store/store";
 import NavigationBar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Main from "./Main";
 
 // check if token is available in localstorage and prevent tampering
@@ -18,6 +19,7 @@ function App() {
 
           <NavigationBar />
           <Main />
+          <Footer />
 
         </div>
       </Router>
