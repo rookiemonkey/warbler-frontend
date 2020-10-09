@@ -1,12 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import deleteMessage from '../../helpers/deleteMessage';
 import setDefaultImage from '../../helpers/setDefaultImage';
 
-const MessageItem = ({ date, profileImageUrl, text, username, deleteMessage, messageID, authorID }) => {
-
+const MessageItem = props => {
+    const dispatch = useDispatch();
+    const { date, profileImageUrl, text, username, messageID, authorID } = props;
     const userID = useSelector(state => state.sessionReducer.user._id)
+
+    const handleDelete = useCallback(() =>
+        dispatch(deleteMessage(userID, messageID))
+    )
 
     return (
 
@@ -40,8 +46,8 @@ const MessageItem = ({ date, profileImageUrl, text, username, deleteMessage, mes
                         (authorID == userID)
                             ? (<a
                                 className="btn btn-danger"
-                                onClick={() => { deleteMessage(userID, messageID) }}
-                                >Delete</a>)
+                                onClick={handleDelete}
+                            >Delete</a>)
                             : null
                     }
 

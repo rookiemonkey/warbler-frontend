@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Moment from 'react-moment';
 import fetchUserMessage from "../helpers/setMessagesUser";
-import deleteMessage from '../helpers/deleteMessage';
 import MessageForm from "./mini/MessageForm";
 import MessageItem from "./mini/MessageItem";
 import Loader from './mini/Loader';
@@ -10,7 +9,7 @@ import Loader from './mini/Loader';
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.sessionReducer.user);
-    const userMessages = useSelector(state => state.messageReducer);
+    const userMessages = useSelector(state => state.userMessagesReducer);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -21,7 +20,6 @@ const Profile = () => {
     }, [user])
 
     const { profilePicture, username, accountCreation, email } = user;
-    const handleDeleteMessage = useCallback(() => dispatch(deleteMessage()), [])
 
     return (
         <div id="timeline-container" className='row'>
@@ -72,7 +70,6 @@ const Profile = () => {
                                                 messageID={m._id}
                                                 authorID={m.user._id}
                                                 profileImageUrl={m.user.profilePicture}
-                                                deleteMessage={handleDeleteMessage}
                                             />
                                         ))
                                         : <Loader />
