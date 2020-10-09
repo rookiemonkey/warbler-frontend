@@ -46,7 +46,7 @@ const Profile = () => {
                         <div className="panel panel-default" id="aside-profile-timeline-middle ">
                             <div id="aside-profile-timeline-inner">
                                 <div className="pt-3">
-                                    <h6 className="mb-0"><strong>@{username}</strong></h6>
+                                    <h2 className="mb-0"><strong>@{username}</strong></h2>
                                     <small>
                                         <em>
                                             Since: <Moment format='Do MMM YYYY' >{accountCreation}</Moment>
@@ -59,7 +59,7 @@ const Profile = () => {
                     </aside>
 
                     <div className="row col-sm-8" id="message-list">
-                        <div className="offset-1 col-sm-10">
+                        <div className="col-sm-12">
                             <MessageFormTimeline />
                             <ul className="list-group" id="messages">
                                 {
