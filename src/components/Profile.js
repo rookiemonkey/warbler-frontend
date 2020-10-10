@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import fetchUserMessage from "../helpers/setMessagesUser";
 import AddBioModal from "./mini/ProfileAddBioModal";
@@ -48,7 +49,7 @@ const Profile = () => {
                         <div className="panel panel-default" id="aside-profile-timeline-middle ">
                             <div id="aside-profile-timeline-inner">
                                 <div className="pt-3">
-                                    <h2 className="mb-0"><strong>@{username}</strong></h2>
+                                    <h3 className="mb-0"><strong>@{username}</strong></h3>
                                     <small>
                                         <em>
                                             Since: <Moment format='Do MMM YYYY' >{accountCreation}</Moment>
@@ -56,6 +57,7 @@ const Profile = () => {
                                     </small>
                                 </div>
                                 <small>{email}</small>
+
                                 <p></p>
 
                                 {
@@ -67,7 +69,11 @@ const Profile = () => {
 
                                             <small
                                                 onClick={handleOpenAddBioModal}
-                                            >Update Bio</small>
+                                            >Update Bio</small> <br />
+
+                                            <Link
+                                                to={`/users/${user._id}/profile/manage`}
+                                            >Manage Account</Link>
 
                                             <AddBioModal
                                                 handleCloseModal={handleCloseAddBioModal}
@@ -75,10 +81,15 @@ const Profile = () => {
                                                 bio={bio}
                                             />
                                         </React.Fragment>
+
                                         : <React.Fragment>
                                             <small
                                                 onClick={handleOpenAddBioModal}
-                                            >Add Bio</small>
+                                            >Add Bio</small> <br />
+
+                                            <Link
+                                                to={`/users/${user._id}/profile/manage`}
+                                            >Manage Account</Link>
 
                                             <AddBioModal
                                                 handleCloseModal={handleCloseAddBioModal}

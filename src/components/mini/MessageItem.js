@@ -34,7 +34,7 @@ const MessageItem = props => {
                 {
                     (authorID == userID)    
                         ? <DropdownButton
-                            menuAlign="right"
+                            alignRight
                             id="dropdown-basic-button"
                             title=""
                             className="dropdown-custom"

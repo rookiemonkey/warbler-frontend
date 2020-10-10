@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
 import Profile from './components/Profile.js';
+import ProfileManage from './components/ProfileManage';
 import isLoggedIn from "./middleware/isLoggedIn";
 import wasLoggedIn from "./middleware/wasLoggedIn";
 import authenticate from "./helpers/authenticate";
@@ -19,12 +20,12 @@ const Main = props => {
     if (props.error != null) { flashError(deleteError, dispatch, 2500) }
 
     // check local storage if the user was logged in and accidentally refresh the page
+    // however, upon reading some articles, this is not a good practive though
     if (props.user.isAuthenticated === false && localStorage.getItem("token") !== null) {
         const t = localStorage.getItem("token")
         const u = wasLoggedIn(t);
         dispatch(setSession(u));
     }
-
 
     return (
         <div className="container">
@@ -65,7 +66,13 @@ const Main = props => {
                     )}
                 ></Route>
 
-                {/* POST MESSAGE */}
+                {/* MANAGE PROFILE */}
+                <Route
+                    path="/users/:id/profile/manage"
+                    component={isLoggedIn(ProfileManage)}
+                ></Route>
+
+                {/* PROFILE */}
                 <Route
                     path="/users/:id/profile"
                     component={isLoggedIn(Profile)}
