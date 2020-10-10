@@ -1,10 +1,15 @@
-import { SET_CURRENT_USER } from "./actionTypes";
+import { SET_CURRENT_USER, SET_CURRENT_USER_BIO } from "./actionTypes";
 
-const setSession = (data) => {
+export const setSession = data => {
     return {
         type: SET_CURRENT_USER,
         user: data,
     };
 };
 
-export default setSession;
+export const setBio = data => {
+    return {
+        type: SET_CURRENT_USER_BIO,
+        bio: data,
+    };
+};

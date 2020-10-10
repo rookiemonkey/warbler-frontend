@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from '../actions/actionTypes';
+import { SET_CURRENT_USER, SET_CURRENT_USER_BIO } from '../actions/actionTypes';
 
 const initialState = {
     isAuthenticated: false,
@@ -12,6 +12,14 @@ const sessionReducer = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: !!Object.keys(action.user).length,
                 user: action.user
+            };
+        case SET_CURRENT_USER_BIO:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    bio: action.bio.bio
+                }
             };
         default: return state
     };

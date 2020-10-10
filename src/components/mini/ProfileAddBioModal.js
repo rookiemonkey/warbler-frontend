@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import updateBio from '../../helpers/updateBio';
 
 const AddBioModal = props => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.sessionReducer.user);
     const { show, handleCloseModal } = props;
     const [bio, setBio] = useState('');
 
     const handleChangeBio = useCallback(event => setBio(event.target.value), [bio])
 
     const handleSubmitBio = useCallback(() => {
-        alert('bio submitted with contents:', bio)
-
-        // submit the form
-        // tap into the redux store
-        // close the modal
+        dispatch(updateBio(user._id, { bio }))
+        handleCloseModal();
     }, [bio]);
 
     return (

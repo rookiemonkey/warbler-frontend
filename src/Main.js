@@ -8,7 +8,7 @@ import isLoggedIn from "./middleware/isLoggedIn";
 import wasLoggedIn from "./middleware/wasLoggedIn";
 import authenticate from "./helpers/authenticate";
 import flashError from "./helpers/flashError";
-import setSession from './store/actions/session';
+import { setSession } from './store/actions/session';
 
 const Main = props => {
     const { authenticate } = props;

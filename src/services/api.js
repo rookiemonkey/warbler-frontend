@@ -41,3 +41,17 @@ export const DELETEapiCall = (path, data) => {
             })
     })
 }
+
+export const PUTapiCall = (path, data) => {
+    return new Promise((resolve, reject) => {
+        return axios.put(path, data)
+            .then(res => {
+                return resolve(res.data)
+            })
+            .catch(err => {
+                return reject({
+                    Message: err.message,
+                })
+            })
+    })
+}

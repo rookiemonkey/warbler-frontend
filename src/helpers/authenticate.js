@@ -1,5 +1,5 @@
 import { addError, removeError } from '../store/actions/error';
-import setSession from '../store/actions/session';
+import { setSession } from '../store/actions/session';
 import { POSTapiCall } from '../services/api';
 import setTokenHeader from './setTokenHeader';
 import { API_URL } from './_variables';

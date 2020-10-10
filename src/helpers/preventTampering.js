@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import setSession from "../store/actions/session";
+import { setSession } from "../store/actions/session";
 import store from "../store/store";
 
 const preventTampering = () => {

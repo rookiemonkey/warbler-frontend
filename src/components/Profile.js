@@ -19,14 +19,14 @@ const Profile = () => {
             await dispatch(fetchUserMessage(user._id))
             await setIsLoading(false)
         })()
-    }, [user])
+    }, [])
 
     const { profilePicture, username, accountCreation, email, bio } = user;
 
     const handleOpenAddBioModal = useCallback(() => setShowAddBio(true), [])
     const handleCloseAddBioModal = useCallback(() => setShowAddBio(false), [])
 
-    const handleOpenUpdateBioModal = useCallback(() => alert('coming soon', []))
+    const handleOpenUpdateBioModal = useCallback(() => alert('coming soon'), [])
 
     return (
         <div id="timeline-container" className='row'>
