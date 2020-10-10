@@ -46,4 +46,12 @@ div#aside-profile-timeline-inner {
             span { font-weight: 800  }
         }
     }
+
+    .manage_account_btn {
+        color: whitesmoke !important;
+
+        &:hover {
+            text-decoration: none !important;
+        }
+    }
 }

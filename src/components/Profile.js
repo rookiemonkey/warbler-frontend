@@ -61,19 +61,23 @@ const Profile = () => {
                                 <p></p>
 
                                 {
-                                    bio
+                                    user.isAuthenticated && bio
                                         ? <React.Fragment>
                                             <p style={{ textAlign: "justify" }}>
                                                 {bio}
                                             </p>
 
                                             <small
+                                                style={{ cursor: 'pointer' }}
                                                 onClick={handleOpenAddBioModal}
                                             >Update Bio</small> <br />
 
-                                            <Link
-                                                to={`/users/${user._id}/profile/manage`}
-                                            >Manage Account</Link>
+                                            <small>
+                                                <Link
+                                                    className="manage_account_btn"
+                                                    to={`/users/${user._id}/profile/manage`}
+                                                >Manage Account</Link>
+                                            </small>
 
                                             <AddBioModal
                                                 handleCloseModal={handleCloseAddBioModal}
@@ -84,12 +88,16 @@ const Profile = () => {
 
                                         : <React.Fragment>
                                             <small
+                                                style={{ cursor: 'pointer' }}
                                                 onClick={handleOpenAddBioModal}
                                             >Add Bio</small> <br />
 
-                                            <Link
-                                                to={`/users/${user._id}/profile/manage`}
-                                            >Manage Account</Link>
+                                            <small>
+                                                <Link
+                                                    className="manage_account_btn"
+                                                    to={`/users/${user._id}/profile/manage`}
+                                                >Manage Account</Link>
+                                            </small>
 
                                             <AddBioModal
                                                 handleCloseModal={handleCloseAddBioModal}
