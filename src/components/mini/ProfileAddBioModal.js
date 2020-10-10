@@ -7,15 +7,15 @@ import updateBio from '../../helpers/updateBio';
 const AddBioModal = props => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.sessionReducer.user);
-    const { show, handleCloseModal } = props;
-    const [bio, setBio] = useState('');
+    const { show, handleCloseModal, bio } = props;
+    const [inputBio, setInputBio] = useState(bio ? bio : '');
 
-    const handleChangeBio = useCallback(event => setBio(event.target.value), [bio])
+    const handleChangeBio = useCallback(event => setInputBio(event.target.value), [bio])
 
     const handleSubmitBio = useCallback(() => {
-        dispatch(updateBio(user._id, { bio }))
+        dispatch(updateBio(user._id, { bio: inputBio }))
         handleCloseModal();
-    }, [bio]);
+    }, [inputBio]);
 
     return (
         <Modal
@@ -31,7 +31,7 @@ const AddBioModal = props => {
                 <form>
                     <div className="form-group">
                         <textarea
-                            value={bio}
+                            value={inputBio}
                             onChange={handleChangeBio}
                             className="form-control"
                             id="bio"

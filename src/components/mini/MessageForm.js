@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import postNewMessage from '../../helpers/postMessage';
 import fetchMessage from "../../helpers/setMessages";
+import fetchUserMessage from "../../helpers/setMessagesUser";
 
 class MessageForm extends Component {
     constructor(props) {
@@ -18,11 +19,14 @@ class MessageForm extends Component {
     handleNewMessage = e => {
         e.preventDefault();
         this.props.postNewMessage(this.state.message);
-        this.setState({ message: '' }, () => { this.props.fetchMessage() });
+        this.setState({ message: '' }, () => {
+            this.props.fetchUserMessage()
+            this.props.fetchMessage()
+        });
     }
 
     render() {
-
+        
         return (
 
             <div id="form-container" className="message-form-timeline-container">
@@ -64,4 +68,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { postNewMessage, fetchMessage })(MessageForm)
+export default connect(mapStateToProps, { postNewMessage, fetchMessage, fetchUserMessage })(MessageForm)

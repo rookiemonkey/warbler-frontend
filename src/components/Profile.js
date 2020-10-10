@@ -26,8 +26,6 @@ const Profile = () => {
     const handleOpenAddBioModal = useCallback(() => setShowAddBio(true), [])
     const handleCloseAddBioModal = useCallback(() => setShowAddBio(false), [])
 
-    const handleOpenUpdateBioModal = useCallback(() => alert('coming soon'), [])
-
     return (
         <div id="timeline-container" className='row'>
             <div className="container">
@@ -68,8 +66,14 @@ const Profile = () => {
                                             </p>
 
                                             <small
-                                                onClick={handleOpenUpdateBioModal}
+                                                onClick={handleOpenAddBioModal}
                                             >Update Bio</small>
+
+                                            <AddBioModal
+                                                handleCloseModal={handleCloseAddBioModal}
+                                                show={showAddBio}
+                                                bio={bio}
+                                            />
                                         </React.Fragment>
                                         : <React.Fragment>
                                             <small
