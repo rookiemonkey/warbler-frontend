@@ -3,6 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
+import ForgotPassword from "./components/ForgotPassword";
 import Profile from './components/Profile.js';
 import ProfileManage from './components/ProfileManage';
 import ProfileNoUser from './components/ProfileNoUser';
@@ -67,10 +68,24 @@ const Main = props => {
                     )}
                 ></Route>
 
+                {/* FORGOT PASSWORD*/}
+                <Route
+                    exact
+                    path="/password/forgot"
+                    render={() => <ForgotPassword />}
+                ></Route>
+
+                {/* RESET PASSWORD*/}
+                {/* <Route
+                    exact
+                    path="/password/reset/:token"
+                    render={ForgotPassword}
+                ></Route> */}
+
                 {/* PUBLIC PROFILE */}
                 <Route
                     path="/users/public/:id/profile"
-                    component={ProfileNoUser}
+                    component={() => <ProfileNoUser />}
                 ></Route>
 
                 {/* MANAGE PROFILE */}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class AuthForm extends Component {
     constructor(props) {
@@ -73,10 +74,17 @@ class AuthForm extends Component {
 
                         {/* will only render if signup props is false/not existing */}
                         {!this.props.signup && (
-                            <button
-                                type="submit"
-                                className="btn btn-primary"
-                            >Login</button>
+                            <React.Fragment>
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                >Login</button>
+
+                                <small>
+                                    <Link to="/password/forgot"
+                                    >Forgot Password </Link>
+                                </small>
+                            </React.Fragment>
                         )}
 
                         {/* will only render if signup props is true/exisiting */}
