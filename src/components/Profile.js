@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Moment from 'react-moment';
 import fetchUserMessage from "../helpers/setMessagesUser";
+import AddBioModal from "./mini/ProfileAddBioModal";
 import MessageForm from "./mini/MessageForm";
 import MessageItem from "./mini/MessageItem";
 import Loader from './mini/Loader';
@@ -11,6 +12,7 @@ const Profile = () => {
     const user = useSelector(state => state.sessionReducer.user);
     const userMessages = useSelector(state => state.userMessagesReducer);
     const [isLoading, setIsLoading] = useState(true);
+    const [showAddBio, setShowAddBio] = useState(false);
 
     useEffect(() => {
         (async function () {
@@ -19,7 +21,12 @@ const Profile = () => {
         })()
     }, [user])
 
-    const { profilePicture, username, accountCreation, email } = user;
+    const { profilePicture, username, accountCreation, email, bio } = user;
+
+    const handleOpenAddBioModal = useCallback(() => setShowAddBio(true), [])
+    const handleCloseAddBioModal = useCallback(() => setShowAddBio(false), [])
+
+    const handleOpenUpdateBioModal = useCallback(() => alert('coming soon', []))
 
     return (
         <div id="timeline-container" className='row'>
@@ -51,6 +58,31 @@ const Profile = () => {
                                     </small>
                                 </div>
                                 <small>{email}</small>
+                                <p></p>
+
+                                {
+                                    bio
+                                        ? <React.Fragment>
+                                            <p style={{ textAlign: "justify" }}>
+                                                {bio}
+                                            </p>
+
+                                            <small
+                                                onClick={handleOpenUpdateBioModal}
+                                            >Update Bio</small>
+                                        </React.Fragment>
+                                        : <React.Fragment>
+                                            <small
+                                                onClick={handleOpenAddBioModal}
+                                            >Add Bio</small>
+
+                                            <AddBioModal
+                                                handleCloseModal={handleCloseAddBioModal}
+                                                show={showAddBio}
+                                            />
+                                        </React.Fragment>
+                                }
+
                             </div>
                         </div>
                     </aside>

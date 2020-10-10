@@ -37,6 +37,10 @@ const NewsItem = props => {
                         &nbsp; by {news_source}
                         </span>
 
+                        <p style={{ textAlign: "justify", marginBottom: '2px' }}>
+                            <b>{title}</b>
+                        </p>
+
                         <p style={{ textAlign: "justify" }}>{description}</p>
 
                     </div>
