@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
 import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 import Profile from './components/Profile.js';
 import ProfileManage from './components/ProfileManage';
 import ProfileNoUser from './components/ProfileNoUser';
@@ -76,11 +77,11 @@ const Main = props => {
                 ></Route>
 
                 {/* RESET PASSWORD*/}
-                {/* <Route
+                <Route
                     exact
                     path="/password/reset/:token"
-                    render={ForgotPassword}
-                ></Route> */}
+                    render={() => <ResetPassword />}
+                ></Route>
 
                 {/* PUBLIC PROFILE */}
                 <Route

@@ -61,7 +61,7 @@ const Profile = () => {
                                 <p></p>
 
                                 {
-                                    user.isAuthenticated && bio
+                                    bio
                                         ? <React.Fragment>
                                             <p style={{ textAlign: "justify" }}>
                                                 {bio}
