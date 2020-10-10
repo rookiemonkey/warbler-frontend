@@ -3,7 +3,7 @@ import { API_URL } from './_variables';
 
 const updateAuthentication = async (userID, data) => {
     try {
-        await PUTapiCall(`${API_URL}/api/users/${userID}/authentication`, data)
+        await PUTapiCall(`${API_URL}/api/user/${userID}/authentication`, data)
         return { result: true, message: "Successfully updated your password" };
     }
 

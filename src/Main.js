@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import AuthForm from "./components/AuthForm";
 import Profile from './components/Profile.js';
 import ProfileManage from './components/ProfileManage';
+import ProfileNoUser from './components/ProfileNoUser';
 import isLoggedIn from "./middleware/isLoggedIn";
 import wasLoggedIn from "./middleware/wasLoggedIn";
 import authenticate from "./helpers/authenticate";
@@ -64,6 +65,12 @@ const Main = props => {
                             signup
                         />
                     )}
+                ></Route>
+
+                {/* PUBLIC PROFILE */}
+                <Route
+                    path="/users/public/:id/profile"
+                    component={ProfileNoUser}
                 ></Route>
 
                 {/* MANAGE PROFILE */}

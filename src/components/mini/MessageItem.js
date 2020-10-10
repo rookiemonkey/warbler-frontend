@@ -22,17 +22,19 @@ const MessageItem = props => {
 
             <li className="list-group-item" id="message-item">
 
-                <img
-                    className="timeline-image"
-                    src={profileImageUrl}
-                    alt={username}
-                    height='100px'
-                    width='100px'
-                    onError={setDefaultImage}
-                />
+                <Link to={`/users/public/${authorID}/profile`}>
+                    <img
+                        className="timeline-image"
+                        src={profileImageUrl}
+                        alt={username}
+                        height='100px'
+                        width='100px'
+                        onError={setDefaultImage}
+                    />
+                </Link>
 
                 {
-                    (authorID == userID)    
+                    (authorID == userID)
                         ? <DropdownButton
                             alignRight
                             id="dropdown-basic-button"
@@ -43,11 +45,13 @@ const MessageItem = props => {
                             <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
                         </DropdownButton>
                         : null
-                }   
+                }
 
                 <div className="message-area">
 
-                    <Link to="/">@{username} &nbsp;</Link>
+                    <Link to={`/users/public/${authorID}/profile`}>
+                        @{username} &nbsp;
+                    </Link>
 
                     <span className="text-muted">
                         <Moment
