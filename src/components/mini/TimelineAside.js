@@ -1,34 +1,100 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import Moment from 'react-moment';
-import setDefaultImage from '../../helpers/setDefaultImage';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Loader from '../mini/Loader';
+import NewsItem from '../mini/NewsItem';
+import fetchCategoricalNews from "../../helpers/setNewsCategories";
+import fetchGlobalNews from "../../helpers/setNewsGlobal";
+import fetchLocalNews from "../../helpers/setNewsLocal";
 
 const TimelineAside = () => {
 
-    const user = useSelector(state => state.sessionReducer.user);
-    const { profilePicture, username, accountCreation, email } = user;
+    const dispatch = useDispatch();
+    const localNews = useSelector(state => state.localNewsReducer);
+    const globalNews = useSelector(state => state.globalNewsReducer);
+    const categoricalNews = useSelector(state => state.categoricalNewsReducer);
+    const [globalNewsIsLoading, setGlobalNewsIsLoading] = useState(true);
+    const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
+    const [categoricalNewsIsLoading, setCategoricalNewsIsLoading] = useState(true);
+
+    useEffect(() => {
+        (async function () {
+
+            await dispatch(await fetchLocalNews());
+            await setLocalNewsIsLoading(false);
+
+            await dispatch(await fetchGlobalNews());
+            await setGlobalNewsIsLoading(false);
+
+            await dispatch(await fetchCategoricalNews());
+            await setCategoricalNewsIsLoading(false);
+
+        })()
+    }, [])
 
     return (
+        <aside className="col-sm-5" id="timelinenouser-news-list">
+            <h3 className="mt-sm-5 mt-md-0">Local News</h3>
+            <ul className="list-group" id="timelinenouser-news">
+                {
+                    !localNewsIsLoading
+                        ? localNews.map(news => (
+                            <NewsItem
+                                key={news.publishedAt}
+                                source={news.source}
+                                title={news.title}
+                                description={news.description}
+                                url={news.url}
+                                urlToImage={news.urlToImage}
+                                publishedAt={news.publishedAt}
+                            />
+                        ))
+                        : <Loader />
+                }
+            </ul>
 
-        <aside className="col-sm-3" id="aside-timeline-outer">
-            <div className="panel panel-default" id="aside-timeline-middle">
-                <div id="aside-timeline-inner">
-                    <img
-                        className="img-thumbnail mb-2"
-                        src={profilePicture}
-                        alt={username}
-                        style={{ width: "95%", height: "auto" }}
-                        onError={setDefaultImage}
-                    />
-                    <h3><strong>@{username}</strong></h3>
-                    <h6><em>Since: <Moment format='Do MMM YYYY' >{accountCreation}</Moment> </em></h6>
-                    <ul>
-                        <li>{email}</li>
-                    </ul>
-                </div>
-            </div>
+            <h3 className="mt-5">Global News</h3>
+            <ul className="list-group" id="timelinenouser-news">
+                {
+                    !globalNewsIsLoading
+                        ? globalNews.map(news => (
+                            <NewsItem
+                                key={news.publishedAt}
+                                source={news.source}
+                                title={news.title}
+                                description={news.description}
+                                url={news.url}
+                                urlToImage={news.urlToImage}
+                                publishedAt={news.publishedAt}
+                            />
+                        ))
+                        : <Loader />
+                }
+            </ul>
+
+            <h3 className="mt-5">Top Stories</h3>
+            <ul className="list-group" id="timelinenouser-news">
+                {
+                    !categoricalNewsIsLoading
+                        ? Object.keys(categoricalNews).map(category => (
+                            <NewsItem
+                                label={
+                                    category
+                                        .charAt(0)
+                                        .toUpperCase() + category.slice(1)
+                                }
+                                key={categoricalNews[category].publishedAt}
+                                source={categoricalNews[category].source}
+                                title={categoricalNews[category].title}
+                                description={categoricalNews[category].description}
+                                url={categoricalNews[category].url}
+                                urlToImage={categoricalNews[category].urlToImage}
+                                publishedAt={categoricalNews[category].publishedAt}
+                            />
+                        ))
+                        : <Loader />
+                }
+            </ul>
         </aside>
-
     )
 }
 

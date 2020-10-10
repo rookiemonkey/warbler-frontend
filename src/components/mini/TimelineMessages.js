@@ -24,8 +24,8 @@ class TimelineMessages extends Component {
 
     return (
 
-      <div className="row col-sm-9" id="message-list">
-        <div className="offset-2 col-sm-10" id="message-list-inner">
+      <div className="row col-sm-7" id="message-list">
+        <div className="col" id="message-list-inner">
           <MessageForm />
           <ul className="list-group" id="messages">
             {
