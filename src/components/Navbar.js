@@ -24,39 +24,24 @@ const NavigationBar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    {
-                        // conditional rendering for logged-in users
-                        (!!Object.keys(user).length)
-                            ? (<ul className="nav navbar-nav navbar-right">
-                                <li><Link to="/">Home</Link></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Account
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to={`/users/${user._id}/profile`}>
-                                            Profile
-                                        </Link>
-                                        <a class="dropdown-item" href="#">
-                                            Manage Account
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <Link to="/" onClick={logout}>
-                                            Log out
-                                        </Link>
-                                    </div>
-                                </li>
-                            </ul>
-                            )
-                            : (
-                                <ul className="nav navbar-nav navbar-right">
-                                    <li><Link to="/signup">Sign Up</Link></li>
-                                    <li><Link to="/signin">Sign In</Link></li>
+                        {
+                            // conditional rendering for logged-in users
+                            (!!Object.keys(user).length)
+                                ? (<ul className="nav navbar-nav navbar-right">
+                                    <li><Link to="/" onClick={logout}>Log out</Link></li>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to={`/users/${user._id}/profile`}>Profile</Link></li>
                                 </ul>
-                            )
-                    }
+                                )
+                                : (
+                                    <ul className="nav navbar-nav navbar-right">
+                                        <li><Link to="/signup">Sign Up</Link></li>
+                                        <li><Link to="/signin">Sign In</Link></li>
+                                    </ul>
+                                )
+                        }
 
-                </div>
+                    </div>
 
 
             </div>
