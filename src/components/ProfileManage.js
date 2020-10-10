@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProfileManageGeneral from './mini/ProfileManageGeneral';
+import ProfileManageAvatar from './mini/ProfileManageAvatar';
 
 const ProfileManage = () => {
 
@@ -35,7 +36,7 @@ const ProfileManage = () => {
                             <ProfileManageGeneral />
                         </Tab.Pane>
                         <Tab.Pane eventKey="avatar">
-                            Avatar
+                            <ProfileManageAvatar />
                         </Tab.Pane>
                         <Tab.Pane eventKey="authentication">
                             Authentication

@@ -1,5 +1,6 @@
 import {
-    SET_CURRENT_USER, SET_CURRENT_USER_BIO, SET_CURRENT_USER_GENERAL
+    SET_CURRENT_USER, SET_CURRENT_USER_BIO, SET_CURRENT_USER_GENERAL,
+    SET_CURRENT_USER_AVATAR
 } from "./actionTypes";
 
 export const setSession = data => {
@@ -21,5 +22,12 @@ export const setGeneral = data => {
         type: SET_CURRENT_USER_GENERAL,
         username: data.username,
         email: data.email
+    };
+};
+
+export const setAvatar = data => {
+    return {
+        type: SET_CURRENT_USER_AVATAR,
+        profilePicture: data
     };
 };
