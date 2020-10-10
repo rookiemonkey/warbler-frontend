@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProfileManageGeneral from './mini/ProfileManageGeneral';
 import ProfileManageAvatar from './mini/ProfileManageAvatar';
+import ProfileManageAuthentication from './mini/ProfileManageAuthentication';
 
 const ProfileManage = () => {
 
@@ -39,7 +40,7 @@ const ProfileManage = () => {
                             <ProfileManageAvatar />
                         </Tab.Pane>
                         <Tab.Pane eventKey="authentication">
-                            Authentication
+                            <ProfileManageAuthentication />
                         </Tab.Pane>
                     </Tab.Content>
                 </Col>
