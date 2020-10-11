@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import fetchUserMessage from "../helpers/setMessagesUser";
 import AddBioModal from "./mini/ProfileAddBioModal";
+import ProfileHeader from './mini/ProfileHeader';
 import MessageForm from "./mini/MessageForm";
 import MessageItem from "./mini/MessageItem";
 import Loader from './mini/Loader';
@@ -22,26 +23,21 @@ const Profile = () => {
         })()
     }, [])
 
-    const { profilePicture, username, accountCreation, email, bio } = user;
+    const { profilePicture, username, accountCreation,
+        profileHeader, email, bio
+    } = user;
 
     const handleOpenAddBioModal = useCallback(() => setShowAddBio(true), [])
     const handleCloseAddBioModal = useCallback(() => setShowAddBio(false), [])
 
     return (
         <div id="timeline-container" className='row'>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <header className="home-hero profile_home">
-                            <img
-                                src={profilePicture}
-                                alt={username}
-                                className="profile_home_avatar"
-                            />
-                        </header>
-                    </div>
-                </div>
-            </div>
+
+            <ProfileHeader
+                profileHeader={profileHeader}
+                profilePicture={profilePicture}
+                username={username}
+            />
 
             <div className="container">
                 <div className="row" id="profile-timeline-container">

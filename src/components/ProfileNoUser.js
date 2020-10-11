@@ -6,6 +6,7 @@ import { addError } from '../store/actions/error';
 import fetchProfileMessages from '../helpers/fetchProfileMessages';
 import fetchProfileInformations from '../helpers/fetchProfileInformations';
 import MessageItem from "./mini/MessageItem";
+import ProfileHeader from './mini/ProfileHeader';
 import Loader from './mini/Loader';
 
 const ProfileNoUser = props => {
@@ -36,23 +37,18 @@ const ProfileNoUser = props => {
 
     else {
 
-        const { profilePicture, username, accountCreation, email, bio } = userProfile;
+        const { profilePicture, username, accountCreation,
+            profileHeader, email, bio
+        } = userProfile;
 
         return (
             <div id="timeline-container" className='row'>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <header className="home-hero profile_home">
-                                <img
-                                    src={profilePicture}
-                                    alt={username}
-                                    className="profile_home_avatar"
-                                />
-                            </header>
-                        </div>
-                    </div>
-                </div>
+
+                <ProfileHeader
+                    profileHeader={profileHeader}
+                    profilePicture={profilePicture}
+                    username={username}
+                />
 
                 <div className="container">
                     <div className="row" id="profile-timeline-container">
