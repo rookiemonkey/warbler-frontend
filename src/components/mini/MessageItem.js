@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import MessageItemUpdateModal from './MessageItemUpdateModal';
 import deleteMessage from '../../helpers/deleteMessage';
 import setDefaultImage from '../../helpers/setDefaultImage';
 
@@ -11,14 +12,25 @@ const MessageItem = props => {
     const dispatch = useDispatch();
     const { date, profileImageUrl, text, username, messageID, authorID } = props;
     const userID = useSelector(state => state.sessionReducer.user._id)
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     const handleDelete = useCallback(() =>
         dispatch(deleteMessage(userID, messageID)), []
     )
 
+    const handleOpenUpdateModal = useCallback(() => setShowUpdateModal(true), []);
+    const handleCloseUpdateModal = useCallback(() => setShowUpdateModal(false), []);
+
     return (
 
         <div id="message-item-container">
+
+            <MessageItemUpdateModal
+                handleCloseModal={handleCloseUpdateModal}
+                show={showUpdateModal}
+                message={text}
+                messageID={messageID}
+            />
 
             <li className="list-group-item" id="message-item">
 
@@ -41,8 +53,12 @@ const MessageItem = props => {
                             title=""
                             className="dropdown-custom"
                         >
-                            <Dropdown.Item onClick={handleDelete} >Delete</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
+                            <Dropdown.Item onClick={handleDelete} >
+                                Delete
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={handleOpenUpdateModal}>
+                                Edit
+                            </Dropdown.Item>
                         </DropdownButton>
                         : null
                 }
