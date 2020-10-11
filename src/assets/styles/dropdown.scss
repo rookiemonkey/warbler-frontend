@@ -14,4 +14,18 @@
             border: none !important;
         }
     }
+
+    .dropdown-menu.show.dropdown-menu-right {
+        padding: 0px !important;
+        background-color: darken($color-bg, 7.5) !important;
+        z-index: 999999 !important;
+
+        a.dropdown-item {
+            color: white !important;
+
+            &:hover {
+                background-color: darken($color-bg, 7.5) !important;
+            }
+        }
+    }
 }
