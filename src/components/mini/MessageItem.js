@@ -34,16 +34,14 @@ const MessageItem = props => {
 
             <li className="list-group-item" id="message-item">
 
-                <Link to={`/users/public/${authorID}/profile`}>
-                    <img
-                        className="timeline-image"
-                        src={profileImageUrl}
-                        alt={username}
-                        height='100px'
-                        width='100px'
-                        onError={setDefaultImage}
-                    />
-                </Link>
+                <img
+                    className="timeline-image"
+                    src={profileImageUrl}
+                    alt={username}
+                    height='100px'
+                    width='100px'
+                    onError={setDefaultImage}
+                />
 
                 {
                     (authorID == userID)
@@ -65,9 +63,15 @@ const MessageItem = props => {
 
                 <div className="message-area">
 
-                    <Link to={`/users/public/${authorID}/profile`}>
-                        @{username} &nbsp;
-                    </Link>
+                    {
+                        authorID !== userID
+                            ? <Link to={`/users/public/${authorID}/profile`}>
+                                @{username} &nbsp;
+                            </Link>
+                            : <Link to={`/users/${authorID}/profile`}>
+                                @{username} &nbsp;
+                            </Link>
+                    }
 
                     <span className="text-muted">
                         <Moment
