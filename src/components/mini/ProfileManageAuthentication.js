@@ -35,7 +35,10 @@ const ProfileManageAuthentication = () => {
             <div className="col">
                 <form onSubmit={handleSubmit}>
 
-                    <label htmlFor="email">New Password:</label>
+                    <label htmlFor="email">New Password:</label> <br />
+                    <small>
+                        Passwords should be at least 8 characters in length
+                    </small>
                     <input
                         type="password"
                         id="password"

@@ -20,8 +20,10 @@
 .modal-footer {
     border-top: 1px solid $color-border !important;
 
-    button.btn.btn-primary {
-        background-color: $color-bg !important;
+    button.btn.btn-primary,
+    button.btn.btn-secondary {
+        background-color: $hover-color  !important;
+        border-color: $hover-color !important;
     }
 }
 

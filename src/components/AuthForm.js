@@ -60,7 +60,12 @@ class AuthForm extends Component {
                         ></input>
 
                         {/* password field */}
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Password:</label> <br />
+                        {this.props.signup && (
+                            <small>
+                                Passwords should be at least 8 characters in length
+                            </small>
+                        )}
                         <input
                             type="password"
                             id="password"
@@ -118,7 +123,12 @@ class AuthForm extends Component {
                                 ></input>
 
                                 {/* profilePicture field */}
-                                <label htmlFor="profilePicture">Profile Picture:</label>
+                                <label htmlFor="profilePicture">Profile Picture:</label> <br />
+                                {this.props.signup && (
+                                    <small>
+                                        if left empty, we will provide a default avatar
+                                    </small>
+                                )}
                                 <input
                                     type="file"
                                     id="profilePicture"
