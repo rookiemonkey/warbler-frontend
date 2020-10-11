@@ -1,0 +1,57 @@
+$box-height: 538px;
+
+.manageprofile_container {
+    min-height: $box-height !important;
+}
+
+.manageprofile_row {
+    max-width: 1000px !important;
+    min-height: $box-height !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0px auto;
+
+    .manageprofile_aside {
+        background-color: $focus-color !important;
+        padding: 15px !important;
+
+        .nav-pills {
+            .nav-item {
+                margin: 2.5px 0px !important;
+
+                a {
+                    color: white !important;
+                }
+
+                &:focus, &:active {
+                    outline: none !important;
+                }
+
+                .nav-link.active {
+                    background-color: $hover-color !important;
+                }
+            }
+
+            .nav-item:hover {
+                background-color: $hover-color !important;
+                border-radius: .25rem !important;
+
+                a {
+                    color: white !important;
+                }
+            }
+        }
+    }
+
+    .manageprofile_main {
+        border: 2px solid $focus-color !important;
+    }
+}
+
+.manageprofile_input {
+    margin-top: 20px !important;
+}
+
+.manageprofile_btn {
+    margin: 0px !important;
+}

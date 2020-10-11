@@ -23,18 +23,8 @@ const ProfileManageAvatar = () => {
 
     return (
         <div className="row justify-content-md-center text-center" id="form-container">
-            <div className="col-md-6">
+            <div className="col">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
-
-                    <input
-                        type="file"
-                        accept="image/*"
-                        id="profilePicture"
-                        name="profilePicture"
-                        className="form-control"
-                        required={true}
-                        onChange={handleChange}
-                    ></input>
 
                     <img
                         alt="profilePicture"
@@ -42,9 +32,19 @@ const ProfileManageAvatar = () => {
                         src={previewAvatar ? previewAvatar : user.profilePicture}
                     />
 
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="profilePicture"
+                        name="profilePicture"
+                        className="form-control manageprofile_input"
+                        required={true}
+                        onChange={handleChange}
+                    ></input>
+
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="btn btn-primary manageprofile_btn"
                     >Update</button>
 
                 </form>

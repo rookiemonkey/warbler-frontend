@@ -26,7 +26,7 @@ const ProfileManageGeneral = () => {
 
     return (
         <div className="row justify-content-md-center text-center" id="form-container">
-            <div className="col-md-6">
+            <div className="col">
                 <form onSubmit={handleSubmit}>
 
                     <label htmlFor="email">Email:</label>
