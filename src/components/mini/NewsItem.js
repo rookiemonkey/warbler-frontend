@@ -47,7 +47,9 @@ const NewsItem = props => {
                             <b>{title}</b>
                         </p>
 
-                        <p style={{ textAlign: "justify" }}>{description}</p>
+                        <small>
+                            {description}
+                        </small>
 
                     </div>
 
