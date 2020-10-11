@@ -23,9 +23,14 @@ const ProfileManageHeader = () => {
     }, [currentHeader])
 
     return (
-        <div className="row justify-content-md-center text-center" id="form-container">
-            <div className="col">
+        <div className="row justify-content-md-center text-center h-100 custom-form-container" id="form-container">
+            <div className="col d-flex justify-content-center align-items-center h-100">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
+
+
+                    <h3>
+                        Header
+                    </h3>
 
                     <img
                         alt="profileHeader"

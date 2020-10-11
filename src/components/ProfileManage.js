@@ -12,10 +12,11 @@ import ProfileManageAuthentication from './mini/ProfileManageAuthentication';
 const ProfileManage = () => {
 
     return (
-        <Container className="manageprofile_container">
+        <Container className="manageprofile_container h-100">
             <Tab.Container
                 id="left-tabs-example"
                 defaultActiveKey="general"
+                className="h-100"
             >
                 <Row className="manageprofile_row">
                     <Col sm={3} className="manageprofile_aside">
