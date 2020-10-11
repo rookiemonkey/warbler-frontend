@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import MessageItemButtons from './MessageItemButtons';
 import MessageItemUpdateModal from './MessageItemUpdateModal';
 import deleteMessage from '../../helpers/deleteMessage';
 import setDefaultImage from '../../helpers/setDefaultImage';
@@ -13,10 +14,15 @@ const MessageItem = props => {
     const { date, profileImageUrl, text, username, messageID, authorID } = props;
     const userID = useSelector(state => state.sessionReducer.user._id)
     const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [like, setLike] = useState(false);
 
     const handleDelete = useCallback(() =>
         dispatch(deleteMessage(userID, messageID)), []
     )
+
+    const handleLike = useCallback(() => {
+        setLike(like => !like)
+    }, [])
 
     const handleOpenUpdateModal = useCallback(() => setShowUpdateModal(true), []);
     const handleCloseUpdateModal = useCallback(() => setShowUpdateModal(false), []);
@@ -80,7 +86,14 @@ const MessageItem = props => {
                         >{date}</Moment>
                     </span>
 
-                    <p style={{ textAlign: "justify" }}>{text}</p>
+                    <p style={{ textAlign: "justify" }}>
+                        {text}
+                    </p>
+
+                    <MessageItemButtons
+                        like={like}
+                        handleLike={handleLike}
+                    />
 
                 </div>
 

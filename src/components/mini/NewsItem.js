@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Moment from 'react-moment';
 import defaultImage from '../../assets/images/default-news-picture.png';
 
@@ -6,6 +6,11 @@ const NewsItem = props => {
 
     const { source, title, description, url, urlToImage, publishedAt, label } = props;
     const { name: news_source } = source;
+
+    const handleImageError = useCallback(event => {
+        event.target.onerror = null;
+        event.target.src = defaultImage;
+    }, [])
 
     return (
 
@@ -24,6 +29,7 @@ const NewsItem = props => {
                         className="news-item-image"
                         src={urlToImage ? urlToImage : defaultImage}
                         alt={title}
+                        onError={handleImageError}
                     />
 
                     <div className="message-area mt-3">
