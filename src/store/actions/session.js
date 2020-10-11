@@ -1,6 +1,6 @@
 import {
     SET_CURRENT_USER, SET_CURRENT_USER_BIO, SET_CURRENT_USER_GENERAL,
-    SET_CURRENT_USER_AVATAR
+    SET_CURRENT_USER_AVATAR, SET_CURRENT_USER_HEADER
 } from "./actionTypes";
 
 export const setSession = data => {
@@ -31,3 +31,10 @@ export const setAvatar = data => {
         profilePicture: data
     };
 };
+
+export const setHeader = data => {
+    return {
+        type: SET_CURRENT_USER_HEADER,
+        profileHeader: data
+    };
+}

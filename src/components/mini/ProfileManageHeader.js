@@ -1,25 +1,26 @@
 import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import updateAvatar from '../../helpers/updateAvatar';
+import updateHeader from '../../helpers/updateHeader';
+import defaultProfileHeader from '../../assets/images/default-profile-header.png';
 
-const ProfileManageAvatar = () => {
+const ProfileManageHeader = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.sessionReducer.user);
-    const [previewAvatar, setPreviewAvatar] = useState('');
-    const [currentAvatar, setCurrentAvatar] = useState([]);
+    const [previewHeader, setPreviewHeader] = useState('');
+    const [currentHeader, setCurrentHeader] = useState([]);
 
     const handleChange = useCallback(event => {
         const { files } = event.target;
-        setCurrentAvatar(files[0])
-        setPreviewAvatar(URL.createObjectURL(...files));
+        setCurrentHeader(files[0])
+        setPreviewHeader(URL.createObjectURL(...files));
     }, [])
 
     const handleSubmit = useCallback(event => {
         event.preventDefault();
         const formData = new FormData()
-        formData.append('profilePicture', currentAvatar)
-        dispatch(updateAvatar(user._id, formData))
-    }, [currentAvatar])
+        formData.append('profileHeader', currentHeader)
+        dispatch(updateHeader(user._id, formData))
+    }, [currentHeader])
 
     return (
         <div className="row justify-content-md-center text-center" id="form-container">
@@ -27,20 +28,20 @@ const ProfileManageAvatar = () => {
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
 
                     <img
-                        alt="profilePicture"
+                        alt="profileHeader"
                         style={{ width: '360px', height: 'auto' }}
-                        src={previewAvatar ? previewAvatar : user.profilePicture}
+                        src={previewHeader ? previewHeader : user.profileHeader}
                     />
 
                     <input
                         type="file"
                         accept="image/*"
-                        id="profilePicture"
-                        name="profilePicture"
+                        id="profileHeader"
+                        name="profileHeader"
                         className="form-control manageprofile_input"
                         required={true}
                         onChange={handleChange}
-                    ></input>
+                    />
 
                     <button
                         type="submit"
@@ -53,4 +54,4 @@ const ProfileManageAvatar = () => {
     )
 }
 
-export default ProfileManageAvatar;
+export default ProfileManageHeader;

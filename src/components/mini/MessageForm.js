@@ -26,12 +26,15 @@ class MessageForm extends Component {
     }
 
     render() {
-        
+
         return (
 
             <div id="form-container" className="message-form-timeline-container">
 
-                <h2 className="message-form-timeline-header">What's on your mind right now?</h2>
+                <h2 className="message-form-timeline-header">
+                    What's on your mind right now?
+                </h2>
+
                 <form
                     id="message-form"
                     className="message-form-timeline"

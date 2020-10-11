@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProfileManageGeneral from './mini/ProfileManageGeneral';
 import ProfileManageAvatar from './mini/ProfileManageAvatar';
+import ProfileManageHeader from './mini/ProfileManageHeader';
 import ProfileManageAuthentication from './mini/ProfileManageAuthentication';
 
 const ProfileManage = () => {
@@ -30,6 +31,11 @@ const ProfileManage = () => {
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
+                                <Nav.Link eventKey="header">
+                                    Profile Header
+                                </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
                                 <Nav.Link eventKey="authentication">
                                     Authentication
                                 </Nav.Link>
@@ -43,6 +49,9 @@ const ProfileManage = () => {
                             </Tab.Pane>
                             <Tab.Pane eventKey="avatar">
                                 <ProfileManageAvatar />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="header">
+                                <ProfileManageHeader />
                             </Tab.Pane>
                             <Tab.Pane eventKey="authentication">
                                 <ProfileManageAuthentication />

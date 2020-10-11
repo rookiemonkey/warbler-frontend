@@ -1,6 +1,6 @@
 import {
     SET_CURRENT_USER, SET_CURRENT_USER_BIO, SET_CURRENT_USER_GENERAL,
-    SET_CURRENT_USER_AVATAR
+    SET_CURRENT_USER_AVATAR, SET_CURRENT_USER_HEADER
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -39,6 +39,14 @@ const sessionReducer = (state = initialState, action) => {
                 user: {
                     ...state.user,
                     profilePicture: action.profilePicture
+                }
+            }
+        case SET_CURRENT_USER_HEADER:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    profileHeader: action.profileHeader
                 }
             }
         default: return state
