@@ -6,6 +6,7 @@ import userMessagesReducer from './messages_user';
 import globalNewsReducer from './news_global';
 import localNewsReducer from './news_local';
 import categoricalNewsReducer from './news_categorical';
+import discoverReducer from './discover';
 
 const rootReducer = combineReducers({
     errorReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     userMessagesReducer,
     globalNewsReducer,
     localNewsReducer,
-    categoricalNewsReducer
+    categoricalNewsReducer,
+    discoverReducer
 });
 
 export default rootReducer

@@ -1,4 +1,4 @@
-import { LOAD_GLOBALNEWS } from '../actions/actionTypes';
+import { LOAD_GLOBALNEWS } from '../actions/_actionTypes';
 
 const globalNewsReducer = (state = [], action) => {
     switch (action.type) {

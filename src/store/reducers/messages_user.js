@@ -1,4 +1,4 @@
-import { USER_MESSAGES, REMOVE_MESSAGE, UPDATE_MESSAGE } from '../actions/actionTypes';
+import { USER_MESSAGES, REMOVE_MESSAGE, UPDATE_MESSAGE } from '../actions/_actionTypes';
 
 const userMessagesReducer = (state = [], action) => {
     switch (action.type) {

@@ -1,7 +1,7 @@
 import {
     SET_CURRENT_USER, SET_CURRENT_USER_BIO, SET_CURRENT_USER_GENERAL,
     SET_CURRENT_USER_AVATAR, SET_CURRENT_USER_HEADER
-} from "./actionTypes";
+} from "./_actionTypes";
 
 export const setSession = data => {
     return {

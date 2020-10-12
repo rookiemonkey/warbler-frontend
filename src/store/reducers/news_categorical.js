@@ -1,4 +1,4 @@
-import { LOAD_CATEGORICALNEWS } from '../actions/actionTypes';
+import { LOAD_CATEGORICALNEWS } from '../actions/_actionTypes';
 
 const categoricalNewsReducer = (state = [], action) => {
     switch (action.type) {

@@ -1,11 +1,11 @@
-import { SET_CURRENT_USER } from "../store/actions/actionTypes";
+import { SET_CURRENT_USER } from "../store/actions/_actionTypes";
 import setTokenHeader from "./setTokenHeader";
 import store from "../store/store";
 
 const logout = e => {
 
     // copied from actions/session.js
-    const setSession = (data) => { return { type: SET_CURRENT_USER, user: data,} }
+    const setSession = (data) => { return { type: SET_CURRENT_USER, user: data, } }
 
     // prevent the default refresh
     e.preventDefault();

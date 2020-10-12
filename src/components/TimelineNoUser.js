@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import DiscoverPeopleItem from './mini/DiscoverPeopleItem';
 import MessageItem from './mini/MessageItem';
 import NewsItem from './mini/NewsItem';
 import Loader from './mini/Loader';
@@ -8,6 +12,7 @@ import fetchMessage from "../helpers/setMessages";
 import fetchCategoricalNews from "../helpers/setNewsCategories";
 import fetchGlobalNews from "../helpers/setNewsGlobal";
 import fetchLocalNews from "../helpers/setNewsLocal";
+import fetchDiscoverPeople from '../helpers/setDiscoverPeople';
 
 const TimelineNoUser = () => {
     const dispatch = useDispatch();
@@ -15,10 +20,12 @@ const TimelineNoUser = () => {
     const localNews = useSelector(state => state.localNewsReducer);
     const globalNews = useSelector(state => state.globalNewsReducer);
     const categoricalNews = useSelector(state => state.categoricalNewsReducer);
+    const discoverPeople = useSelector(state => state.discoverReducer.discoverPeople);
     const [messagesIsLoading, setMessagesIsLoading] = useState(true);
     const [globalNewsIsLoading, setGlobalNewsIsLoading] = useState(true);
     const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
     const [categoricalNewsIsLoading, setCategoricalNewsIsLoading] = useState(true);
+    const [discoverPeopleIsLoading, setDiscoverPeopleIsLoading] = useState(true);
 
     useEffect(() => {
         (async function () {
@@ -34,6 +41,9 @@ const TimelineNoUser = () => {
 
             await dispatch(await fetchCategoricalNews());
             await setCategoricalNewsIsLoading(false);
+
+            await dispatch(await fetchDiscoverPeople());
+            await setDiscoverPeopleIsLoading(false);
 
         })()
     }, [])
@@ -70,6 +80,31 @@ const TimelineNoUser = () => {
                                     : <Loader />
                             }
                         </ul>
+
+                        {
+                            !discoverPeopleIsLoading
+                                ? <OwlCarousel
+                                    className="owl-theme"
+                                    loop
+                                    autoPlay
+                                    autoplayTimeout={1500}
+                                    margin={10}
+                                    nav
+                                >
+                                    {
+                                        discoverPeople.map((people, ind) => (
+                                            <DiscoverPeopleItem
+                                                key={ind}
+                                                username={people.username}
+                                                profilePicture={people.profilePicture}
+                                                _id={people._id}
+                                            />
+                                        ))
+                                    }
+                                </OwlCarousel>
+                                : <Loader />
+                        }
+
                     </div>
 
                     <div className="col-sm-12 col-md-5" id="timelinenouser-news-list">
@@ -134,8 +169,8 @@ const TimelineNoUser = () => {
                                     : <Loader />
                             }
                         </ul>
-
                     </div>
+
                 </div>
             </div>
 

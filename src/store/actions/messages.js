@@ -1,7 +1,7 @@
 import {
     LOAD_MESSAGES, REMOVE_MESSAGE,
     USER_MESSAGES, UPDATE_MESSAGE
-} from './actionTypes';
+} from './_actionTypes';
 
 export const userMessages = messages => ({
     type: USER_MESSAGES,

@@ -1,4 +1,4 @@
-import { LOAD_MESSAGES, REMOVE_MESSAGE } from '../actions/actionTypes';
+import { LOAD_MESSAGES, REMOVE_MESSAGE } from '../actions/_actionTypes';
 
 const messageReducer = (state = [], action) => {
     switch (action.type) {

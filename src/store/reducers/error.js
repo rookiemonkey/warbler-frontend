@@ -1,4 +1,4 @@
-import { ADD_ERROR, REMOVE_ERROR } from '../actions/actionTypes'
+import { ADD_ERROR, REMOVE_ERROR } from '../actions/_actionTypes'
 
 const initialState = {
     error: null

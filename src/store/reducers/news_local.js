@@ -1,4 +1,4 @@
-import { LOAD_LOCALNEWS } from '../actions/actionTypes';
+import { LOAD_LOCALNEWS } from '../actions/_actionTypes';
 
 const localNewsReducer = (state = [], action) => {
     switch (action.type) {
