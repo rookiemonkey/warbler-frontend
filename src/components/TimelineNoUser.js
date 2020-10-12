@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
@@ -16,7 +16,7 @@ import fetchDiscoverPeople from '../helpers/setDiscoverPeople';
 
 const TimelineNoUser = () => {
     const dispatch = useDispatch();
-    const messages = useSelector(state => state.messageReducer);
+    const { messages, skip } = useSelector(state => state.messageReducer);
     const localNews = useSelector(state => state.localNewsReducer);
     const globalNews = useSelector(state => state.globalNewsReducer);
     const categoricalNews = useSelector(state => state.categoricalNewsReducer);
@@ -30,7 +30,7 @@ const TimelineNoUser = () => {
     useEffect(() => {
         (async function () {
 
-            await dispatch(await fetchMessage());
+            await dispatch(await fetchMessage(skip));
             await setMessagesIsLoading(false);
 
             await dispatch(await fetchLocalNews());
@@ -47,6 +47,11 @@ const TimelineNoUser = () => {
 
         })()
     }, [])
+
+    const handleLoadMore = useCallback(() => {
+        dispatch(fetchMessage(skip + 20));
+        setMessagesIsLoading(false);
+    }, [skip])
 
     return (
         <React.Fragment>
@@ -79,6 +84,11 @@ const TimelineNoUser = () => {
                                     ))
                                     : <Loader />
                             }
+
+                            <button
+                                className="btn btn-primary btn_loadmore"
+                                onClick={handleLoadMore}
+                            >Load More</button>
                         </ul>
 
                         <h3 className="mt-3">Discover People</h3>

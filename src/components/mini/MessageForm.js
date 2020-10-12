@@ -20,8 +20,8 @@ class MessageForm extends Component {
         e.preventDefault();
         this.props.postNewMessage(this.state.message);
         this.setState({ message: '' }, () => {
-            this.props.fetchUserMessage()
-            this.props.fetchMessage()
+            this.props.fetchUserMessage(this.props.userid)
+            this.props.fetchMessage(this.props.skip)
         });
     }
 
@@ -67,7 +67,10 @@ class MessageForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        errors: state.errorReducer
+        errors: state.errorReducer,
+        messages: state.messageReducer.messages,
+        userid: state.sessionReducer.user._id,
+        skip: state.messageReducer.skip
     }
 }
 

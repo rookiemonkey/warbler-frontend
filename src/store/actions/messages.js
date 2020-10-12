@@ -3,14 +3,16 @@ import {
     USER_MESSAGES, UPDATE_MESSAGE
 } from './_actionTypes';
 
-export const userMessages = messages => ({
+export const userMessages = (messages, skip) => ({
     type: USER_MESSAGES,
-    messages
+    messages,
+    skip
 })
 
-export const loadMessage = messages => ({
+export const loadMessage = (messages, skip) => ({
     type: LOAD_MESSAGES,
-    messages
+    messages,
+    skip
 })
 
 export const updateMessage = (id, text) => ({

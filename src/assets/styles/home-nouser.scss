@@ -134,3 +134,18 @@ header.home-hero {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
 }
+
+.btn_loadmore {
+    border-color: $focus-color;
+    background-color: $focus-color;
+    text-transform: uppercase;
+
+    &:hover, &:active {
+        border-color: $hover-color !important;
+        background-color: $hover-color !important;
+    }
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}

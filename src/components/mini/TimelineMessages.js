@@ -21,10 +21,14 @@ class TimelineMessages extends Component {
   }
 
   async componentDidMount() {
-    await this.props.fetchMessage();
+    await this.props.fetchMessage(this.props.skip);
     await this.setState({ ...this.state, messagesIsLoading: false })
     await this.props.fetchDiscoverPeople();
     await this.setState({ ...this.state, discoverPeopleIsLoading: false })
+  }
+
+  handleLoadMore = () => {
+    this.props.fetchMessage(this.props.skip + 20);
   }
 
   render() {
@@ -84,6 +88,11 @@ class TimelineMessages extends Component {
                 ))
                 : <Loader />
             }
+
+            <button
+              className="btn btn-primary btn_loadmore"
+              onClick={this.handleLoadMore}
+            >Load More</button>
           </ul>
 
         </div>
@@ -95,7 +104,8 @@ class TimelineMessages extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messageReducer,
+    messages: state.messageReducer.messages,
+    skip: state.messageReducer.skip,
     discoverPeople: state.discoverReducer.discoverPeople,
     userid: state.sessionReducer.user._id
   };

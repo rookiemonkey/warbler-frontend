@@ -12,13 +12,13 @@ import Loader from './mini/Loader';
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.sessionReducer.user);
-    const userMessages = useSelector(state => state.userMessagesReducer);
+    const { messages, skip } = useSelector(state => state.userMessagesReducer);
     const [isLoading, setIsLoading] = useState(true);
     const [showAddBio, setShowAddBio] = useState(false);
 
     useEffect(() => {
         (async function () {
-            await dispatch(fetchUserMessage(user._id))
+            await dispatch(fetchUserMessage(user._id, skip))
             await setIsLoading(false)
         })()
     }, [user])
@@ -29,6 +29,11 @@ const Profile = () => {
 
     const handleOpenAddBioModal = useCallback(() => setShowAddBio(true), [])
     const handleCloseAddBioModal = useCallback(() => setShowAddBio(false), [])
+
+    const handleLoadMore = useCallback(() => {
+        dispatch(fetchUserMessage(user._id, skip + 20));
+        setIsLoading(false);
+    }, [skip])
 
     return (
         <div id="timeline-container" className='row'>
@@ -112,7 +117,7 @@ const Profile = () => {
                             <ul className="list-group" id="messages">
                                 {
                                     !isLoading
-                                        ? userMessages.map(m => (
+                                        ? messages.map(m => (
                                             <MessageItem
                                                 key={m._id}
                                                 date={m.createAt}
@@ -125,6 +130,11 @@ const Profile = () => {
                                         ))
                                         : <Loader />
                                 }
+
+                                <button
+                                    className="btn btn-primary btn_loadmore"
+                                    onClick={handleLoadMore}
+                                >Load More</button>
                             </ul>
                         </div>
                     </div>
