@@ -1,35 +1,75 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import fetchMessage from "../../helpers/setMessages";
-import deleteMessage from '../../helpers/deleteMessage';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import DiscoverPeopleItem from './DiscoverPeopleItem';
 import MessageItem from "./MessageItem";
 import MessageForm from "./MessageForm";
 import Loader from './Loader';
+import fetchMessage from "../../helpers/setMessages";
+import deleteMessage from '../../helpers/deleteMessage';
+import fetchDiscoverPeople from '../../helpers/setDiscoverPeople';
 
 class TimelineMessages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      messagesIsLoading: true,
+      discoverPeopleIsLoading: true
     }
   }
 
   async componentDidMount() {
     await this.props.fetchMessage();
-    await this.setState({ ...this.state, isLoading: false })
+    await this.setState({ ...this.state, messagesIsLoading: false })
+    await this.props.fetchDiscoverPeople();
+    await this.setState({ ...this.state, discoverPeopleIsLoading: false })
   }
 
   render() {
-    const { messages, deleteMessage } = this.props;
+    const { messages, discoverPeople, deleteMessage, userid } = this.props;
+    const { discoverPeopleIsLoading, messagesIsLoading } = this.state;
 
     return (
 
       <div className="row col-sm-7" id="message-list">
         <div className="col" id="message-list-inner">
           <MessageForm />
+
+          {
+            !discoverPeopleIsLoading
+              ? <React.Fragment>
+                <h3 className="mt-3">Discover People</h3>
+                <OwlCarousel
+                  className="owl-theme"
+                  loop
+                  autoPlay
+                  autoplayTimeout={1500}
+                  margin={10}
+                  nav
+                  dots={false}
+                  items={4}
+                >
+                  {
+                    discoverPeople.map((people, ind) => {
+                      if (people._id != userid)
+                        return <DiscoverPeopleItem
+                          key={ind}
+                          username={people.username}
+                          profilePicture={people.profilePicture}
+                          _id={people._id}
+                        />
+                    })
+                  }
+                </OwlCarousel>
+              </React.Fragment>
+              : <Loader />
+          }
+
           <ul className="list-group" id="messages">
             {
-              !this.state.isLoading
+              !messagesIsLoading
                 ? messages.map(m => (
                   <MessageItem
                     key={m._id}
@@ -45,6 +85,7 @@ class TimelineMessages extends Component {
                 : <Loader />
             }
           </ul>
+
         </div>
       </div>
 
@@ -54,8 +95,11 @@ class TimelineMessages extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messageReducer
+    messages: state.messageReducer,
+    discoverPeople: state.discoverReducer.discoverPeople,
+    userid: state.sessionReducer.user._id
   };
 }
 
-export default connect(mapStateToProps, { fetchMessage, deleteMessage })(TimelineMessages);
+export default connect(mapStateToProps,
+  { fetchMessage, deleteMessage, fetchDiscoverPeople })(TimelineMessages);
