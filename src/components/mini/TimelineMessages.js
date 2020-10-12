@@ -37,10 +37,10 @@ class TimelineMessages extends Component {
         <div className="col" id="message-list-inner">
           <MessageForm />
 
+          <h3 className="mt-3">Discover People</h3>
           {
             !discoverPeopleIsLoading
               ? <React.Fragment>
-                <h3 className="mt-3">Discover People</h3>
                 <OwlCarousel
                   className="owl-theme"
                   loop
