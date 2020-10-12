@@ -83,25 +83,30 @@ const TimelineNoUser = () => {
 
                         {
                             !discoverPeopleIsLoading
-                                ? <OwlCarousel
-                                    className="owl-theme"
-                                    loop
-                                    autoPlay
-                                    autoplayTimeout={1500}
-                                    margin={10}
-                                    nav
-                                >
-                                    {
-                                        discoverPeople.map((people, ind) => (
-                                            <DiscoverPeopleItem
-                                                key={ind}
-                                                username={people.username}
-                                                profilePicture={people.profilePicture}
-                                                _id={people._id}
-                                            />
-                                        ))
-                                    }
-                                </OwlCarousel>
+                                ? <React.Fragment>
+                                    <h3 className="mt-3">Discover People</h3>
+                                    <OwlCarousel
+                                        className="owl-theme"
+                                        loop
+                                        autoPlay
+                                        autoplayTimeout={1500}
+                                        margin={10}
+                                        nav
+                                        dots={false}
+                                        items={4}
+                                    >
+                                        {
+                                            discoverPeople.map((people, ind) => (
+                                                <DiscoverPeopleItem
+                                                    key={ind}
+                                                    username={people.username}
+                                                    profilePicture={people.profilePicture}
+                                                    _id={people._id}
+                                                />
+                                            ))
+                                        }
+                                    </OwlCarousel>
+                                </React.Fragment>
                                 : <Loader />
                         }
 

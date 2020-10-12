@@ -6,12 +6,12 @@ const DiscoverPeopleItem = props => {
 
     return (
         <Link to={`/users/public/${_id}/profile`}>
-            <div className="item">
+            <div className="item discover_peopleitem_container">
                 <img
+                    className="discover_peopleitem_icon"
                     src={profilePicture}
-                    style={{ width: '30px', height: '30px' }}
                 />
-                <h4>{username}</h4>
+                <small>{username}</small>
             </div>
         </Link>
     )
