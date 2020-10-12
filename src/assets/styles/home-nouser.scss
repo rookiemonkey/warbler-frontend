@@ -97,7 +97,6 @@ header.home-hero {
     #timelinenouser-news-list {
         #timelinenouser-news {
             padding-right: 0px !important;
-            border: 1px solid $color-border;
 
             #news-item-container {
 
@@ -114,7 +113,7 @@ header.home-hero {
                 }
 
                 #news-item{
-                    background-color: $color-bg !important;
+                    background-color: $focus-color !important;
 
                     .news-item-image {
                         width: 100%;
@@ -124,4 +123,14 @@ header.home-hero {
             }
         }
     }
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }

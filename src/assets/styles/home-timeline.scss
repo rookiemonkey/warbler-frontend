@@ -90,7 +90,6 @@ div#timeline-container {
     #timelinenouser-news-list {
         #timelinenouser-news {
             padding-right: 0px !important;
-            border: 1px solid $color-border;
 
             #news-item-container {
 
@@ -107,7 +106,7 @@ div#timeline-container {
                 }
 
                 #news-item{
-                    background-color: $color-bg !important;
+                    background-color: $focus-color !important;
 
                     .news-item-image {
                         width: 100%;
