@@ -21,7 +21,7 @@ const Profile = () => {
             await dispatch(fetchUserMessage(user._id))
             await setIsLoading(false)
         })()
-    }, [])
+    }, [user])
 
     const { profilePicture, username, accountCreation,
         profileHeader, email, bio
