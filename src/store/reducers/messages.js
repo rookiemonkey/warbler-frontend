@@ -6,9 +6,19 @@ const messageReducer = (state = { messages: [], skip: 0 }, action) => {
 
             sessionStorage.setItem('public_message_skip', JSON.stringify(action.skip))
 
+            // this prevents duplicate messages being render
+            const parsedMessages = action.messages.filter(({ _id: value1 }) => {
+
+                // return true only of the is from state.messages is the same
+                // as the action.messages message _id
+                return !state.messages.some(({ _id: value2 }) => {
+                    return value2 === value1
+                });
+            })
+
             return {
                 skip: action.skip,
-                messages: [...state.messages, ...action.messages]
+                messages: [...state.messages, ...parsedMessages]
             };
 
 

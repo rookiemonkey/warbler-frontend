@@ -8,7 +8,7 @@ const fetchMessage = skip => {
 
     const dataOnSessionStorage = sessionStorage.getItem('public_message_skip');
 
-    if (dataOnSessionStorage && parseInt(dataOnSessionStorage) === skip) {
+    if (dataOnSessionStorage && parseInt(dataOnSessionStorage) === skip && skip !== 0) {
       return null;
     }
 
