@@ -85,10 +85,14 @@ const TimelineNoUser = () => {
                                     : <Loader />
                             }
 
-                            <button
-                                className="btn btn-primary btn_loadmore"
-                                onClick={handleLoadMore}
-                            >Load More</button>
+                            {
+                                !messagesIsLoading
+                                    ? <button
+                                        className="btn btn-primary btn_loadmore"
+                                        onClick={handleLoadMore}
+                                    >Load More</button>
+                                    : null
+                            }
                         </ul>
 
                         <h3 className="mt-3">Discover People</h3>

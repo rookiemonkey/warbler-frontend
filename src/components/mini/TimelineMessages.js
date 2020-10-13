@@ -89,10 +89,14 @@ class TimelineMessages extends Component {
                 : <Loader />
             }
 
-            <button
-              className="btn btn-primary btn_loadmore"
-              onClick={this.handleLoadMore}
-            >Load More</button>
+            {
+              !messagesIsLoading
+                ? <button
+                  className="btn btn-primary btn_loadmore"
+                  onClick={this.handleLoadMore}
+                >Load More</button>
+                : null
+            }
           </ul>
 
         </div>

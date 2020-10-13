@@ -131,10 +131,14 @@ const Profile = () => {
                                         : <Loader />
                                 }
 
-                                <button
-                                    className="btn btn-primary btn_loadmore"
-                                    onClick={handleLoadMore}
-                                >Load More</button>
+                                {
+                                    !isLoading
+                                        ? <button
+                                            className="btn btn-primary btn_loadmore"
+                                            onClick={handleLoadMore}
+                                        >Load More</button>
+                                        : null
+                                }
                             </ul>
                         </div>
                     </div>
