@@ -1,4 +1,4 @@
-import { LOAD_MESSAGES, REMOVE_MESSAGE } from '../actions/_actionTypes';
+import { LOAD_MESSAGES, REMOVE_MESSAGE, UPDATE_MESSAGE } from '../actions/_actionTypes';
 
 const messageReducer = (state = { messages: [], skip: 0 }, action) => {
     switch (action.type) {
@@ -30,6 +30,19 @@ const messageReducer = (state = { messages: [], skip: 0 }, action) => {
             return {
                 ...state,
                 messages: updatedMessages,
+            };
+
+        case UPDATE_MESSAGE:
+            return {
+                ...state,
+                messages: state.messages.map(m => {
+                    if (JSON.stringify(m._id) !== JSON.stringify(action.id)) {
+                        return m
+                    }
+
+                    m.text = action.text;
+                    return m
+                })
             };
 
         default: return state;

@@ -1,9 +1,9 @@
 import { addError } from "../store/actions/error";
-import { loadMessage } from "../store/actions/messages";
+import { updateMessage } from "../store/actions/messages";
 import { GETapiCall } from "../services/api";
 import { API_URL } from './_variables';
 
-const fetchMessage = skip => {
+const fetchUpdatedMessage = (skip, id, text) => {
   return dispatch => {
 
     const dataOnSessionStorage = sessionStorage.getItem('public_message_skip');
@@ -16,7 +16,7 @@ const fetchMessage = skip => {
     return GETapiCall(`${API_URL}/api/message/all?skip=${skip}`)
 
       // loads all the messages to the state
-      .then(res => dispatch(loadMessage(res, skip)))
+      .then(res => dispatch(updateMessage(id, text)))
 
       // lead an error to the state
       .catch(err => dispatch(addError(err.message)));
@@ -24,4 +24,4 @@ const fetchMessage = skip => {
   };
 };
 
-export default fetchMessage;
+export default fetchUpdatedMessage;
