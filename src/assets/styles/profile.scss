@@ -78,3 +78,24 @@ div#aside-profile-timeline-inner {
         }
     }
 }
+
+@media screen and (max-width: 797px) {
+    div#timeline-container {
+        div.container {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+
+            div#profile-timeline-container {
+                aside#aside-profile-timeline-outer {
+                    padding-left: 0px !important;
+                    padding-right: 0px !important;
+                }
+            }
+
+            div#message-list {
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+        }
+    }
+}

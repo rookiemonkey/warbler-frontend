@@ -52,7 +52,7 @@ const ProfileNoUser = props => {
 
                 <div className="container">
                     <div className="row" id="profile-timeline-container">
-                        <aside className="col-sm-12 col-md-4 mt-4" id="aside-profile-timeline-outer ">
+                        <aside className="col-sm-12 col-md-4 mt-4" id="aside-profile-timeline-outer">
                             <div className="panel panel-default" id="aside-profile-timeline-middle ">
                                 <div id="aside-profile-timeline-inner">
                                     <div className="pt-3">
