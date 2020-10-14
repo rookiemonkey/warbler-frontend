@@ -77,7 +77,7 @@ const ProfileNoUser = props => {
                         </aside>
 
                         <div className="col-sm-12 col-md-8" id="message-list">
-                            <div className="col-sm-12" style={{ paddingLeft: '0px' }}>
+                            <div className="col-sm-12" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                                 <ul className="list-group" id="messages">
                                     {
                                         !isMessagesLoading

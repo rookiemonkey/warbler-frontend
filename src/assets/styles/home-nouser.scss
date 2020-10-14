@@ -58,7 +58,7 @@ header.home-hero {
                 background-color: $color-bg;
                 display: flex;
                 align-items: flex-start;
-                padding: 20px;
+                padding: 30px 20px 20px 20px;
 
                 &:hover {
                     background-color: lighten($color-bg, 10);

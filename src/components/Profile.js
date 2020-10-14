@@ -112,7 +112,7 @@ const Profile = () => {
                     </aside>
 
                     <div className="col-sm-12 col-md-8" id="message-list">
-                        <div className="col-sm-12" style={{ paddingLeft: '0px' }}>
+                        <div className="col-sm-12" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                             <MessageForm />
                             <ul className="list-group" id="messages">
                                 {
