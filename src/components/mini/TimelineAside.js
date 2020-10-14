@@ -33,7 +33,7 @@ const TimelineAside = () => {
     }, [])
 
     return (
-        <aside className="col-sm-5" id="timelinenouser-news-list">
+        <aside className="col col-sm-12 col-lg-5" id="timelinenouser-news-list">
             <h3 className="mt-sm-5 mt-md-0">Local News</h3>
             <ul className="list-group" id="timelinenouser-news">
                 {
