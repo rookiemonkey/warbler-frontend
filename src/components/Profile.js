@@ -111,8 +111,8 @@ const Profile = () => {
                         </div>
                     </aside>
 
-                    <div className="row col-sm-8" id="message-list">
-                        <div className="col-sm-12">
+                    <div className="col-sm-8" id="message-list">
+                        <div className="col-sm-12" style={{ paddingLeft: '0px' }}>
                             <MessageForm />
                             <ul className="list-group" id="messages">
                                 {

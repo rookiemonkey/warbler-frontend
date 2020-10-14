@@ -51,7 +51,7 @@ div#timeline-container {
                 background-color: $color-bg;
                 display: flex;
                 align-items: flex-start;
-                padding: 40px 20px 20px 20px;
+                padding: 20px;
 
                 &:hover {
                     background-color: lighten($color-bg, 10);

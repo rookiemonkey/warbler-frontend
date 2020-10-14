@@ -52,7 +52,7 @@ const ProfileNoUser = props => {
 
                 <div className="container">
                     <div className="row" id="profile-timeline-container">
-                        <aside className="col-sm-4 mt-4" id="aside-profile-timeline-outer ">
+                        <aside className="col-sm-12 col-md-4 mt-4" id="aside-profile-timeline-outer ">
                             <div className="panel panel-default" id="aside-profile-timeline-middle ">
                                 <div id="aside-profile-timeline-inner">
                                     <div className="pt-3">
@@ -76,8 +76,8 @@ const ProfileNoUser = props => {
                             </div>
                         </aside>
 
-                        <div className="row col-sm-8" id="message-list">
-                            <div className="col-sm-12">
+                        <div className="col-sm-12 col-md-8" id="message-list">
+                            <div className="col-sm-12" style={{ paddingLeft: '0px' }}>
                                 <ul className="list-group" id="messages">
                                     {
                                         !isMessagesLoading

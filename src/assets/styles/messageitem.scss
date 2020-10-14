@@ -7,3 +7,24 @@
     position: relative;
     top: 3.5px;
 }
+
+@media screen and (max-width: 450px) {
+    #message-item {
+        flex-direction: column;
+
+        .timeline-image {
+            width: 50px;
+            height: 50px;
+            float: right;
+        }
+
+        .message-area {
+            margin-top: 10px !important;
+            margin-left: 0px !important;
+        }
+    }
+
+    #message-list {
+        
+    }
+}
