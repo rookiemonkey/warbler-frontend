@@ -25,7 +25,25 @@
             }
 
             .discover_peopleitem_username {
+                margin-top: 7.5px;
                 color: white !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .owl-carousel {
+        .owl-stage-outer {
+            .discover_peopleitem_link  {
+                .discover_peopleitem_icon {
+                    width: 75px;
+                    height: 75px;
+                }
+
+                .discover_peopleitem_username {
+                    font-size: x-small;
+                }
             }
         }
     }

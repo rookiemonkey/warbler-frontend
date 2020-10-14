@@ -16,7 +16,8 @@ class TimelineMessages extends Component {
     super(props);
     this.state = {
       messagesIsLoading: true,
-      discoverPeopleIsLoading: true
+      discoverPeopleIsLoading: true,
+      numCarouselItems: 4
     }
   }
 
@@ -27,13 +28,21 @@ class TimelineMessages extends Component {
     await this.setState({ ...this.state, discoverPeopleIsLoading: false })
   }
 
+  componentDidUpdate() {
+    (function handleResize() {
+      if (window.innerWidth < 450) { this.setState({ ...this.state, numCarouselItems: 3 }) }
+      else { this.setState({ ...this.state, numCarouselItems: 4 }) }
+      window.addEventListener('resize', handleResize)
+    })()
+  }
+
   handleLoadMore = () => {
     this.props.fetchMessage(this.props.skip + 20);
   }
 
   render() {
     const { messages, discoverPeople, deleteMessage, userid } = this.props;
-    const { discoverPeopleIsLoading, messagesIsLoading } = this.state;
+    const { discoverPeopleIsLoading, messagesIsLoading, numCarouselItems } = this.state;
 
     return (
 
@@ -53,7 +62,7 @@ class TimelineMessages extends Component {
                   margin={10}
                   nav
                   dots={false}
-                  items={4}
+                  items={numCarouselItems}
                 >
                   {
                     discoverPeople.map((people, ind) => {

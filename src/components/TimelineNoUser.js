@@ -27,6 +27,7 @@ const TimelineNoUser = () => {
     const [localNewsIsLoading, setLocalNewsIsLoading] = useState(true);
     const [categoricalNewsIsLoading, setCategoricalNewsIsLoading] = useState(true);
     const [discoverPeopleIsLoading, setDiscoverPeopleIsLoading] = useState(true);
+    const [numCarouselItems, setNumCarouselItems] = useState(4);
 
     useEffect(() => {
         (async function () {
@@ -49,6 +50,14 @@ const TimelineNoUser = () => {
         })()
     }, [])
 
+    useEffect(() => {
+        (function handleResize() {
+            if (window.innerWidth < 450) { setNumCarouselItems(3) }
+            else { setNumCarouselItems(4) }
+            window.addEventListener('resize', handleResize)
+        })()
+    })
+
     const handleLoadMore = useCallback(() => {
         dispatch(fetchMessage(skip + 20));
         setMessagesIsLoading(false);
@@ -67,7 +76,7 @@ const TimelineNoUser = () => {
 
             <div className="container mt-3 p-0" id="timelinenouser-container">
                 <div className="row">
-                    <div className="col-sm-12 col-md-7" id="timelinenouser-message-list">
+                    <div className="col-sm-12 col-lg-7" id="timelinenouser-message-list">
                         <h3>Latest on Warbler</h3>
                         <ul className="list-group" id="timelinenouser-messages">
                             {
@@ -108,7 +117,7 @@ const TimelineNoUser = () => {
                                         margin={10}
                                         nav
                                         dots={false}
-                                        items={4}
+                                        items={numCarouselItems}
                                     >
                                         {
                                             discoverPeople.map((people, ind) => (
@@ -127,7 +136,7 @@ const TimelineNoUser = () => {
 
                     </div>
 
-                    <div className="col-sm-12 col-md-5" id="timelinenouser-news-list">
+                    <div className="col-sm-12 col-lg-5" id="timelinenouser-news-list">
                         <h3 className="mt-sm-5 mt-md-0">Local News</h3>
                         <ul className="list-group" id="timelinenouser-news">
                             {
