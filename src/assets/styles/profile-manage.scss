@@ -64,3 +64,19 @@ $box-height: 538px;
 .custom-form-container {
     margin: 0px !important;
 }
+
+@media screen and (max-width: 767px) {
+    .manageprofile_main {
+        padding: 15px !important;
+
+        .manageprofile_input {
+            width: 100% !important;
+        }
+
+        #profilemanage_avatar_preview,
+        #profilemanage_header_preview {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+}

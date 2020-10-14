@@ -19,7 +19,7 @@ const ProfileManage = () => {
                 className="h-100"
             >
                 <Row className="manageprofile_row">
-                    <Col sm={3} className="manageprofile_aside">
+                    <Col sm={12} md={3} className="manageprofile_aside">
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
                                 <Nav.Link eventKey="general">
@@ -43,7 +43,7 @@ const ProfileManage = () => {
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col sm={9} className="manageprofile_main">
+                    <Col sm={12} md={9} className="manageprofile_main">
                         <Tab.Content>
                             <Tab.Pane eventKey="general">
                                 <ProfileManageGeneral />

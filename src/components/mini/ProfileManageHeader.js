@@ -22,6 +22,8 @@ const ProfileManageHeader = () => {
         dispatch(updateHeader(user._id, formData))
     }, [currentHeader])
 
+    console.log(user)
+
     return (
         <div className="row justify-content-md-center text-center h-100 custom-form-container" id="form-container">
             <div className="col d-flex justify-content-center align-items-center h-100">
@@ -33,9 +35,16 @@ const ProfileManageHeader = () => {
                     </h3>
 
                     <img
+                        id="profilemanage_header_preview"
                         alt="profileHeader"
                         style={{ width: '360px', height: 'auto' }}
-                        src={previewHeader ? previewHeader : user.profileHeader}
+                        src={
+                            previewHeader
+                                ? previewHeader
+                                : user.profileHeader
+                                    ? user.profileHeader
+                                    : defaultProfileHeader
+                        }
                     />
 
                     <input

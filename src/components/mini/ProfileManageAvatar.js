@@ -31,6 +31,7 @@ const ProfileManageAvatar = () => {
                     </h3>
 
                     <img
+                        id="profilemanage_avatar_preview"
                         alt="profilePicture"
                         style={{ width: '360px', height: 'auto' }}
                         src={previewAvatar ? previewAvatar : user.profilePicture}
