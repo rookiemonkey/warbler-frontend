@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logout from '../helpers/logout'
 
 const NavigationBar = () => {
     const user = useSelector(state => state.sessionReducer.user);
+
+    const handleClick = () => {
+        const dropdown = document.querySelector('#navbarSupportedContent');
+
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show')
+        }
+    }
+
+    const handleLogout = useCallback(event => {
+        logout(event); handleClick()
+    }, [])
 
     return (
 
@@ -24,24 +36,24 @@ const NavigationBar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        {
-                            // conditional rendering for logged-in users
-                            (!!Object.keys(user).length)
-                                ? (<ul className="nav navbar-nav navbar-right">
-                                    <li><Link to="/" onClick={logout}>Log out</Link></li>
-                                    <li><Link to="/">Home</Link></li>
-                                    <li><Link to={`/users/${user._id}/profile`}>Profile</Link></li>
+                    {
+                        // conditional rendering for logged-in users
+                        (!!Object.keys(user).length)
+                            ? (<ul className="nav navbar-nav navbar-right">
+                                <li><Link to="/" onClick={handleLogout}>Log out</Link></li>
+                                <li><Link to="/" onClick={handleClick}>Home</Link></li>
+                                <li><Link to={`/users/${user._id}/profile`} onClick={handleClick}>Profile</Link></li>
+                            </ul>
+                            )
+                            : (
+                                <ul className="nav navbar-nav navbar-right">
+                                    <li><Link to="/signup" onClick={handleClick}>Sign Up</Link></li>
+                                    <li><Link to="/signin" onClick={handleClick}>Sign In</Link></li>
                                 </ul>
-                                )
-                                : (
-                                    <ul className="nav navbar-nav navbar-right">
-                                        <li><Link to="/signup">Sign Up</Link></li>
-                                        <li><Link to="/signin">Sign In</Link></li>
-                                    </ul>
-                                )
-                        }
+                            )
+                    }
 
-                    </div>
+                </div>
 
 
             </div>
