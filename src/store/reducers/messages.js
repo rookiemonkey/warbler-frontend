@@ -1,4 +1,7 @@
-import { LOAD_MESSAGES, REMOVE_MESSAGE, UPDATE_MESSAGE } from '../actions/_actionTypes';
+import {
+    LOAD_MESSAGES, REMOVE_MESSAGE,
+    UPDATE_MESSAGE, ADD_MESSAGE
+} from '../actions/_actionTypes';
 
 const messageReducer = (state = { messages: [], skip: 0 }, action) => {
     switch (action.type) {
@@ -31,6 +34,12 @@ const messageReducer = (state = { messages: [], skip: 0 }, action) => {
                 ...state,
                 messages: updatedMessages,
             };
+
+        case ADD_MESSAGE:
+            return {
+                ...state,
+                messages: [action.newMessage, ...state.messages]
+            }
 
         case UPDATE_MESSAGE:
             return {

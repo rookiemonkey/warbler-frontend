@@ -19,10 +19,7 @@ class MessageForm extends Component {
     handleNewMessage = e => {
         e.preventDefault();
         this.props.postNewMessage(this.state.message);
-        this.setState({ message: '' }, () => {
-            this.props.fetchUserMessage(this.props.userid, this.props.userSkip)
-            this.props.fetchMessage(this.props.skip)
-        });
+        this.setState({ message: '' });
     }
 
     render() {

@@ -1,4 +1,7 @@
-import { USER_MESSAGES, REMOVE_MESSAGE, UPDATE_MESSAGE } from '../actions/_actionTypes';
+import {
+    USER_MESSAGES, REMOVE_MESSAGE,
+    UPDATE_MESSAGE, ADD_MESSAGE
+} from '../actions/_actionTypes';
 
 const userMessagesReducer = (state = { messages: [], skip: 0 }, action) => {
     switch (action.type) {
@@ -27,6 +30,12 @@ const userMessagesReducer = (state = { messages: [], skip: 0 }, action) => {
                 ...state,
                 messages: state.messages.filter(m => { return m._id !== action.id })
             };
+
+        case ADD_MESSAGE:
+            return {
+                ...state,
+                messages: [action.newMessage, ...state.messages]
+            }
 
         case UPDATE_MESSAGE:
             return {

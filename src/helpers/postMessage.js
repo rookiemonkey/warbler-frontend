@@ -1,4 +1,5 @@
 import { POSTapiCall } from '../services/api';
+import { addMessage } from '../store/actions/messages';
 import { addError } from '../store/actions/error';
 import { API_URL } from './_variables';
 
@@ -12,7 +13,7 @@ const postNewMessage = text => (dispatch, getState) => {
 
     // call POSTapiCALL will return a promise
     return POSTapiCall(`${API_URL}/api/message/${id}/new`, { text })
-        .then(res => { })
+        .then(res => dispatch(addMessage(res)))
         .catch(err => dispatch(addError(err.message)))
 }
 
