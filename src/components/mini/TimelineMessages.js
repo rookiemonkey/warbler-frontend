@@ -59,7 +59,7 @@ class TimelineMessages extends Component {
                     discoverPeople.map((people, ind) => {
                       if (people._id != userid)
                         return <DiscoverPeopleItem
-                          key={ind}
+                          key={people._id}
                           username={people.username}
                           profilePicture={people.profilePicture}
                           _id={people._id}

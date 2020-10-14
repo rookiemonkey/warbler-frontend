@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import shortid from 'shortid';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -112,7 +113,7 @@ const TimelineNoUser = () => {
                                         {
                                             discoverPeople.map((people, ind) => (
                                                 <DiscoverPeopleItem
-                                                    key={ind}
+                                                    key={people._id}
                                                     username={people.username}
                                                     profilePicture={people.profilePicture}
                                                     _id={people._id}
@@ -133,7 +134,7 @@ const TimelineNoUser = () => {
                                 !localNewsIsLoading
                                     ? localNews.map(news => (
                                         <NewsItem
-                                            key={news.publishedAt}
+                                            key={shortid.generate()}
                                             source={news.source}
                                             title={news.title}
                                             description={news.description}
@@ -152,7 +153,7 @@ const TimelineNoUser = () => {
                                 !globalNewsIsLoading
                                     ? globalNews.map(news => (
                                         <NewsItem
-                                            key={news.publishedAt}
+                                            key={shortid.generate()}
                                             source={news.source}
                                             title={news.title}
                                             description={news.description}
@@ -169,22 +170,24 @@ const TimelineNoUser = () => {
                         <ul className="list-group" id="timelinenouser-news">
                             {
                                 !categoricalNewsIsLoading
-                                    ? Object.keys(categoricalNews).map(category => (
-                                        <NewsItem
-                                            label={
-                                                category
-                                                    .charAt(0)
-                                                    .toUpperCase() + category.slice(1)
-                                            }
-                                            key={categoricalNews[category].publishedAt}
-                                            source={categoricalNews[category].source}
-                                            title={categoricalNews[category].title}
-                                            description={categoricalNews[category].description}
-                                            url={categoricalNews[category].url}
-                                            urlToImage={categoricalNews[category].urlToImage}
-                                            publishedAt={categoricalNews[category].publishedAt}
-                                        />
-                                    ))
+                                    ? Object
+                                        .keys(categoricalNews)
+                                        .map(category => (
+                                            <NewsItem
+                                                label={
+                                                    category
+                                                        .charAt(0)
+                                                        .toUpperCase() + category.slice(1)
+                                                }
+                                                key={shortid.generate()}
+                                                source={categoricalNews[category].source}
+                                                title={categoricalNews[category].title}
+                                                description={categoricalNews[category].description}
+                                                url={categoricalNews[category].url}
+                                                urlToImage={categoricalNews[category].urlToImage}
+                                                publishedAt={categoricalNews[category].publishedAt}
+                                            />
+                                        ))
                                     : <Loader />
                             }
                         </ul>

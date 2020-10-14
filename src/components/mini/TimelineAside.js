@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import shortid from 'shortid';
 import Loader from '../mini/Loader';
 import NewsItem from '../mini/NewsItem';
 import fetchCategoricalNews from "../../helpers/setNewsCategories";
@@ -39,7 +40,7 @@ const TimelineAside = () => {
                     !localNewsIsLoading
                         ? localNews.map(news => (
                             <NewsItem
-                                key={news.publishedAt}
+                                key={shortid.generate()}
                                 source={news.source}
                                 title={news.title}
                                 description={news.description}
@@ -58,7 +59,7 @@ const TimelineAside = () => {
                     !globalNewsIsLoading
                         ? globalNews.map(news => (
                             <NewsItem
-                                key={news.publishedAt}
+                                key={shortid.generate()}
                                 source={news.source}
                                 title={news.title}
                                 description={news.description}
@@ -82,7 +83,7 @@ const TimelineAside = () => {
                                         .charAt(0)
                                         .toUpperCase() + category.slice(1)
                                 }
-                                key={categoricalNews[category].publishedAt}
+                                key={shortid.generate()}
                                 source={categoricalNews[category].source}
                                 title={categoricalNews[category].title}
                                 description={categoricalNews[category].description}
