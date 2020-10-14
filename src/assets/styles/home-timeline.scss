@@ -113,3 +113,12 @@ div#timeline-container {
         }
     }
 }
+
+@media screen and (max-width: 797px) {
+    div#timeline-container {
+        #timelinenouser-news-list {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+    }
+}
